@@ -1,0 +1,122 @@
+{
+  "num_found": 3241,
+  "listings": [
+    {
+      "id": "ld-5f2b8c3e1a2b3c4d",
+      "vin": "1FTFW1EF3EKE57182",
+      "heading": "2014 Ford F-150 XLT SuperCrew 4WD",
+      "price": 24995,
+      "miles": 68500,
+      "msrp": 42500,
+      "data_source": "dealer_website",
+      "source_url": "https://www.example-dealer.com/inventory/1FTFW1EF3EKE57182",
+      "vdp_url": "https://www.example-dealer.com/inventory/1FTFW1EF3EKE57182",
+      "seller_type": "dealer",
+      "car_type": "used",
+      "scraped_at": 1718000000,
+      "last_seen_at": 1718000000,
+      "first_seen_at": 1716000000,
+      "dom": 20,
+      "dom_180": 20,
+      "dom_active": 20,
+      "dealer_id": "dealer-12345",
+      "stock_no": "P1234",
+      "build": {
+        "year": 2014,
+        "make": "Ford",
+        "model": "F-150",
+        "trim": "XLT",
+        "body_type": "Pickup Truck",
+        "vehicle_type": "Truck",
+        "transmission": "Automatic",
+        "drivetrain": "4WD",
+        "fuel_type": "Gasoline",
+        "engine": "3.5L V6 EcoBoost",
+        "engine_size": "3.5L",
+        "cylinders": 6,
+        "doors": 4,
+        "made_in": "USA",
+        "highway_fuel_economy": 23,
+        "city_fuel_economy": 17
+      },
+      "dealer": {
+        "id": "dealer-12345",
+        "name": "Example Ford Dealership",
+        "website": "https://www.example-dealer.com",
+        "dealer_type": "franchise",
+        "zip": "78701",
+        "city": "Austin",
+        "state": "TX",
+        "latitude": 30.2672,
+        "longitude": -97.7431,
+        "phone": "512-555-0100",
+        "franchises": ["Ford"]
+      }
+    },
+    {
+      "id": "ld-7a9c2d4e5f6a7b8c",
+      "vin": "1C4RJFBG8FC756432",
+      "heading": "2015 Jeep Grand Cherokee Laredo 4WD",
+      "price": 19500,
+      "miles": 82000,
+      "msrp": 35000,
+      "data_source": "dealer_website",
+      "seller_type": "dealer",
+      "car_type": "used",
+      "scraped_at": 1718000000,
+      "last_seen_at": 1718000000,
+      "first_seen_at": 1715000000,
+      "dom": 35,
+      "dom_active": 35,
+      "dealer_id": "dealer-67890",
+      "build": {
+        "year": 2015,
+        "make": "Jeep",
+        "model": "Grand Cherokee",
+        "trim": "Laredo",
+        "body_type": "SUV",
+        "vehicle_type": "SUV",
+        "transmission": "Automatic",
+        "drivetrain": "4WD",
+        "fuel_type": "Gasoline",
+        "engine": "3.6L V6",
+        "engine_size": "3.6L",
+        "cylinders": 6,
+        "doors": 4,
+        "made_in": "USA",
+        "highway_fuel_economy": 25,
+        "city_fuel_economy": 17
+      },
+      "dealer": {
+        "id": "dealer-67890",
+        "name": "Metro Motors",
+        "zip": "78702",
+        "city": "Austin",
+        "state": "TX",
+        "latitude": 30.2500,
+        "longitude": -97.7200,
+        "franchises": ["Jeep", "Chrysler", "Dodge"]
+      }
+    }
+  ],
+  "stats": {
+    "price": {
+      "mean": 22247.50,
+      "min": 8500,
+      "max": 89999,
+      "count": 3241
+    },
+    "miles": {
+      "mean": 58234.00,
+      "min": 100,
+      "max": 250000,
+      "count": 3241
+    },
+    "dom": {
+      "mean": 28.5,
+      "min": 1,
+      "max": 365,
+      "count": 3241
+    }
+  }
+}

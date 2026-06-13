@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marketcheck/main/json-schema/marketcheck-listing.json",
+  "title": "MarketCheck Listing",
+  "description": "A vehicle listing from the MarketCheck automotive marketplace data platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique listing identifier"
+    },
+    "vin": {
+      "type": "string",
+      "description": "17-character Vehicle Identification Number",
+      "minLength": 17,
+      "maxLength": 17,
+      "pattern": "^[A-HJ-NPR-Z0-9]{17}$"
+    },
+    "heading": {
+      "type": "string",
+      "description": "Listing heading or title"
+    },
+    "price": {
+      "type": "number",
+      "description": "Listed price in USD",
+      "minimum": 0
+    },
+    "miles": {
+      "type": "integer",
+      "description": "Odometer reading in miles",
+      "minimum": 0
+    },
+    "msrp": {
+      "type": "number",
+      "description": "Manufacturer Suggested Retail Price in USD",
+      "minimum": 0
+    },
+    "data_source": {
+      "type": "string",
+      "description": "Source of the listing data"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the original listing source"
+    },
+    "vdp_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the Vehicle Details Page"
+    },
+    "seller_type": {
+      "type": "string",
+      "description": "Type of seller",
+      "enum": ["dealer", "private", "auction"]
+    },
+    "car_type": {
+      "type": "string",
+      "description": "Type of car listing",
+      "enum": ["new", "used", "certified"]
+    },
+    "scraped_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the listing was scraped"
+    },
+    "last_seen_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the listing was last seen active"
+    },
+    "first_seen_at": {
+      "type": "integer",
+      "description": "Unix timestamp when the listing was first seen"
+    },
+    "dom": {
+      "type": "integer",
+      "description": "Days on market",
+      "minimum": 0
+    },
+    "dom_180": {
+      "type": "integer",
+      "description": "Days on market in the last 180 days",
+      "minimum": 0
+    },
+    "dom_active": {
+      "type": "integer",
+      "description": "Active days on market",
+      "minimum": 0
+    },
+    "dealer_id": {
+      "type": "string",
+      "description": "Dealer identifier"
+    },
+    "stock_no": {
+      "type": "string",
+      "description": "Dealer stock number"
+    },
+    "inventory_type": {
+      "type": "string",
+      "description": "Inventory classification"
+    },
+    "ref_price": {
+      "type": "number",
+      "description": "Reference or comparison price"
+    },
+    "ref_miles": {
+      "type": "number",
+      "description": "Reference or comparison miles"
+    },
+    "ref_year": {
+      "type": "integer",
+      "description": "Reference year for comparison"
+    },
+    "build": {
+      "$ref": "#/definitions/Build"
+    },
+    "dealer": {
+      "$ref": "#/definitions/Dealer"
+    }
+  },
+  "required": ["id", "vin"],
+  "definitions": {
+    "Build": {
+      "type": "object",
+      "description": "Vehicle build and specification information",
+      "properties": {
+        "year": {
+          "type": "integer",
+          "description": "Model year",
+          "minimum": 1900,
+          "maximum": 2100
+        },
+        "make": {
+          "type": "string",
+          "description": "Vehicle make (manufacturer)"
+        },
+        "model": {
+          "type": "string",
+          "description": "Vehicle model"
+        },
+        "trim": {
+          "type": "string",
+          "description": "Vehicle trim level"
+        },
+        "body_type": {
+          "type": "string",
+          "description": "Body style (Sedan, SUV, Truck, Coupe, etc.)"
+        },
+        "vehicle_type": {
+          "type": "string",
+          "description": "Vehicle type classification"
+        },
+        "transmission": {
+          "type": "string",
+          "description": "Transmission type"
+        },
+        "drivetrain": {
+          "type": "string",
+          "description": "Drivetrain configuration",
+          "enum": ["FWD", "AWD", "RWD", "4WD", "4x4"]
+        },
+        "fuel_type": {
+          "type": "string",
+          "description": "Primary fuel type"
+        },
+        "engine": {
+          "type": "string",
+          "description": "Engine description string"
+        },
+        "engine_size": {
+          "type": "string",
+          "description": "Engine displacement size"
+        },
+        "cylinders": {
+          "type": "integer",
+          "description": "Number of engine cylinders"
+        },
+        "doors": {
+          "type": "integer",
+          "description": "Number of doors",
+          "minimum": 2,
+          "maximum": 6
+        },
+        "made_in": {
+          "type": "string",
+          "description": "Country of manufacture"
+        },
+        "highway_fuel_economy": {
+          "type": "integer",
+          "description": "Highway fuel economy in MPG"
+        },
+        "city_fuel_economy": {
+          "type": "integer",
+          "description": "City fuel economy in MPG"
+        }
+      }
+    },
+    "Dealer": {
+      "type": "object",
+      "description": "Dealer information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique dealer identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Dealer name"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Dealer website URL"
+        },
+        "dealer_type": {
+          "type": "string",
+          "description": "Type of dealership"
+        },
+        "zip": {
+          "type": "string",
+          "description": "Dealer zip/postal code"
+        },
+        "city": {
+          "type": "string",
+          "description": "Dealer city"
+        },
+        "state": {
+          "type": "string",
+          "description": "Dealer state (2-letter US state code)"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Dealer geographic latitude",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Dealer geographic longitude",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "phone": {
+          "type": "string",
+          "description": "Dealer phone number"
+        },
+        "franchises": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of car makes/franchises carried by this dealer"
+        }
+      }
+    }
+  }
+}

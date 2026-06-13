@@ -1,0 +1,193 @@
+vocabulary:
+  name: MarketCheck API Vocabulary
+  description: >-
+    Domain vocabulary for the MarketCheck automotive market data platform,
+    covering vehicle listings, inventory, dealers, VIN decoding, market
+    analytics, and pricing intelligence for the US and Canadian automotive markets.
+  url: https://www.marketcheck.com/
+  terms:
+
+    - term: listing
+      label: Listing
+      description: >-
+        A vehicle listing representing an active or historical offer to sell a
+        vehicle, sourced from dealer websites, auction platforms, or private
+        seller sites. Each listing is uniquely identified and includes pricing,
+        mileage, location, and vehicle specification details.
+
+    - term: vin
+      label: VIN
+      description: >-
+        Vehicle Identification Number - a 17-character alphanumeric code that
+        uniquely identifies a motor vehicle. The VIN encodes the vehicle's
+        manufacturer, model, year, engine type, and serial number. MarketCheck
+        uses VINs as the primary key for vehicle history and specification lookups.
+
+    - term: taxonomy_vin
+      label: Taxonomy VIN
+      description: >-
+        A 10-character excerpt from the 17-character VIN used to identify a
+        vehicle build specification. Derived by taking the first 8 characters
+        plus the 10th and 11th characters of the full VIN. Used to find all
+        vehicles of an identical build configuration.
+
+    - term: dom
+      label: Days on Market
+      description: >-
+        The number of days a vehicle listing has been active on the market.
+        MarketCheck tracks DOM from first_seen_at to last_seen_at dates.
+        Lower DOM typically indicates higher demand for a vehicle type.
+
+    - term: dom_active
+      label: Active Days on Market
+      description: >-
+        The number of days a vehicle listing has been continuously active
+        without interruption. Differs from total DOM in that it resets if
+        a listing goes inactive and relists.
+
+    - term: dom_180
+      label: 180-Day DOM
+      description: >-
+        Days on market over the trailing 180-day window. Useful for
+        understanding recent market velocity for specific vehicle types.
+
+    - term: mds
+      label: Market Days Supply
+      description: >-
+        Market Days Supply (MDS) is a key automotive industry metric that
+        represents how many days it would take to sell the current inventory
+        at the current rate of sales. Calculated as (current inventory) /
+        (daily sales rate). Lower MDS indicates high demand relative to supply.
+
+    - term: car_type
+      label: Car Type
+      description: >-
+        Classification of a vehicle listing as new, used, or certified
+        pre-owned (CPO). New vehicles come directly from manufacturer to
+        dealer. Used vehicles have had at least one prior owner. Certified
+        vehicles are used vehicles that have passed manufacturer inspection
+        and include extended warranties.
+
+    - term: seller_type
+      label: Seller Type
+      description: >-
+        The category of entity selling the vehicle. Can be dealer (franchise
+        or independent dealership), private (individual seller), or auction
+        (wholesale or retail auction platform).
+
+    - term: msrp
+      label: MSRP
+      description: >-
+        Manufacturer Suggested Retail Price - the price a manufacturer
+        recommends a retailer sell a new vehicle. Also used by MarketCheck
+        as a reference price benchmark when comparing used vehicle prices
+        against original retail cost.
+
+    - term: build
+      label: Build
+      description: >-
+        The complete vehicle specification decoded from the VIN, including
+        year, make, model, trim, body type, drivetrain, engine, transmission,
+        fuel type, and factory-installed equipment. Represents the vehicle's
+        manufacturing configuration.
+
+    - term: ymmt
+      label: YMMT
+      description: >-
+        Year/Make/Model/Trim combination used as a filter parameter in search
+        queries. YMMT allows searching for multiple vehicle configurations
+        in a single API call using pipe-delimited combinations.
+
+    - term: facets
+      label: Facets
+      description: >-
+        Aggregated counts of listings grouped by specific attribute values,
+        enabling drill-down navigation of search results. Common facets
+        include year, make, model, body_type, drivetrain, exterior_color,
+        and transmission.
+
+    - term: dealer
+      label: Dealer
+      description: >-
+        A vehicle dealership, either franchise (authorized by a manufacturer)
+        or independent. MarketCheck indexes over 44,000 US dealers and 3,500
+        Canadian dealers and their inventory.
+
+    - term: inventory
+      label: Inventory
+      description: >-
+        The set of vehicles currently listed for sale by a specific dealer.
+        MarketCheck updates dealer inventory daily by crawling dealer websites
+        and aggregating listing data.
+
+    - term: price_prediction
+      label: Price Prediction
+      description: >-
+        MarketCheck's proprietary model for predicting market-appropriate
+        selling prices for used vehicles based on comparable active listings,
+        vehicle specifications, mileage, condition, geographic market, and
+        historical sales data.
+
+    - term: depreciation
+      label: Depreciation
+      description: >-
+        The reduction in a vehicle's market value over time. MarketCheck
+        tracks historical pricing data to calculate depreciation curves for
+        specific makes, models, and trim levels.
+
+    - term: trends
+      label: Trends
+      description: >-
+        Historical time-series data showing changes in average price, average
+        mileage, days on market, and listing counts for a specific vehicle
+        type or market segment over time.
+
+    - term: competition
+      label: Competition
+      description: >-
+        Analysis of competing vehicles in the same market segment, including
+        similar vehicles from the same manufacturer and cross-shopping
+        alternatives from competing brands.
+
+    - term: comparison
+      label: Comparison
+      description: >-
+        Market comparison data that positions a specific vehicle against
+        market averages for its segment, showing whether a listing is
+        priced above, below, or at market value.
+
+    - term: oem_incentives
+      label: OEM Incentives
+      description: >-
+        Manufacturer-provided financial incentives including rebates, special
+        financing rates, and lease deals offered to consumers for purchasing
+        specific new vehicle models. MarketCheck tracks incentives from 30+
+        car manufacturers.
+
+    - term: plate_to_vin
+      label: Plate to VIN
+      description: >-
+        A lookup service that converts a vehicle's license plate number to its
+        corresponding VIN, enabling vehicle history and specification lookups
+        by plate number.
+
+    - term: title_check
+      label: Title Check
+      description: >-
+        A vehicle history service that checks for title issues including
+        salvage titles, flood damage, lemon law buybacks, and other title
+        brands that affect a vehicle's value and insurability.
+
+    - term: auction_listing
+      label: Auction Listing
+      description: >-
+        Vehicle listings from wholesale and retail automotive auctions,
+        including Manheim, ADESA, and dealer-to-dealer auctions. Auction
+        listings provide insight into wholesale market pricing.
+
+    - term: neovin
+      label: NeoVIN
+      description: >-
+        MarketCheck's enhanced VIN decoding product that provides granular
+        build-level data including factory-installed options, packages, and
+        individual equipment items beyond standard VIN decode output.

@@ -1,0 +1,18 @@
+{
+  "year": 2020,
+  "make": "Toyota",
+  "model": "Camry",
+  "trim": "XSE",
+  "body_type": "Sedan",
+  "vehicle_type": "Car",
+  "transmission": "Automatic",
+  "drivetrain": "FWD",
+  "fuel_type": "Gasoline",
+  "engine": "2.5L 4-Cylinder",
+  "engine_size": "2.5L",
+  "cylinders": 4,
+  "doors": 4,
+  "made_in": "USA",
+  "highway_fuel_economy": 32,
+  "city_fuel_economy": 22
+}

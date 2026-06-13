@@ -44,7 +44,7 @@ apis:
       - type: Documentation
         url: https://docs.marketcheck.com/docs/api/cars
       - type: OpenAPI
-        url: https://documenter.getpostman.com/view/3967924/RW1hhvSR
+        url: https://raw.githubusercontent.com/api-evangelist/marketcheck/refs/heads/main/openapi/marketcheck-cars-openapi.yml
 
   - name: MarketCheck VIN Decoder API
     description: >-

@@ -1,0 +1,298 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "mc": "https://www.marketcheck.com/vocab/",
+    "auto": "https://auto.schema.org/",
+
+    "Listing": "mc:Listing",
+    "Vehicle": "schema:Vehicle",
+    "Dealer": "schema:AutoDealer",
+    "Build": "mc:VehicleBuild",
+    "SearchResponse": "mc:SearchResponse",
+    "HistoricalListing": "mc:HistoricalListing",
+    "MarketDaysSupply": "mc:MarketDaysSupply",
+
+    "id": "@id",
+    "type": "@type",
+
+    "vin": {
+      "@id": "auto:vehicleIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "heading": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "miles": {
+      "@id": "auto:mileageFromOdometer",
+      "@type": "xsd:integer"
+    },
+    "msrp": {
+      "@id": "auto:vehicleMsrp",
+      "@type": "xsd:decimal"
+    },
+    "source_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "vdp_url": {
+      "@id": "mc:vehicleDetailsPageUrl",
+      "@type": "@id"
+    },
+    "seller_type": {
+      "@id": "mc:sellerType",
+      "@type": "xsd:string"
+    },
+    "car_type": {
+      "@id": "mc:carType",
+      "@type": "xsd:string"
+    },
+    "scraped_at": {
+      "@id": "mc:scrapedAt",
+      "@type": "xsd:integer"
+    },
+    "last_seen_at": {
+      "@id": "mc:lastSeenAt",
+      "@type": "xsd:integer"
+    },
+    "first_seen_at": {
+      "@id": "mc:firstSeenAt",
+      "@type": "xsd:integer"
+    },
+    "dom": {
+      "@id": "mc:daysOnMarket",
+      "@type": "xsd:integer"
+    },
+    "dom_180": {
+      "@id": "mc:daysOnMarket180",
+      "@type": "xsd:integer"
+    },
+    "dom_active": {
+      "@id": "mc:activeDaysOnMarket",
+      "@type": "xsd:integer"
+    },
+    "dealer_id": {
+      "@id": "mc:dealerId",
+      "@type": "xsd:string"
+    },
+    "stock_no": {
+      "@id": "mc:stockNumber",
+      "@type": "xsd:string"
+    },
+    "ref_price": {
+      "@id": "mc:referencePrice",
+      "@type": "xsd:decimal"
+    },
+    "ref_miles": {
+      "@id": "mc:referenceMiles",
+      "@type": "xsd:integer"
+    },
+    "ref_year": {
+      "@id": "mc:referenceYear",
+      "@type": "xsd:integer"
+    },
+    "build": {
+      "@id": "mc:vehicleBuild",
+      "@type": "@id"
+    },
+    "dealer": {
+      "@id": "mc:listedByDealer",
+      "@type": "@id"
+    },
+
+    "year": {
+      "@id": "auto:modelDate",
+      "@type": "xsd:integer"
+    },
+    "make": {
+      "@id": "schema:brand",
+      "@type": "xsd:string"
+    },
+    "model": {
+      "@id": "auto:model",
+      "@type": "xsd:string"
+    },
+    "trim": {
+      "@id": "auto:vehicleConfiguration",
+      "@type": "xsd:string"
+    },
+    "body_type": {
+      "@id": "auto:bodyType",
+      "@type": "xsd:string"
+    },
+    "vehicle_type": {
+      "@id": "mc:vehicleType",
+      "@type": "xsd:string"
+    },
+    "transmission": {
+      "@id": "auto:vehicleTransmission",
+      "@type": "xsd:string"
+    },
+    "drivetrain": {
+      "@id": "auto:driveWheelConfiguration",
+      "@type": "xsd:string"
+    },
+    "fuel_type": {
+      "@id": "auto:fuelType",
+      "@type": "xsd:string"
+    },
+    "engine": {
+      "@id": "auto:vehicleEngine",
+      "@type": "xsd:string"
+    },
+    "engine_size": {
+      "@id": "mc:engineDisplacement",
+      "@type": "xsd:string"
+    },
+    "cylinders": {
+      "@id": "mc:numberOfCylinders",
+      "@type": "xsd:integer"
+    },
+    "doors": {
+      "@id": "auto:numberOfDoors",
+      "@type": "xsd:integer"
+    },
+    "made_in": {
+      "@id": "schema:countryOfOrigin",
+      "@type": "xsd:string"
+    },
+    "highway_fuel_economy": {
+      "@id": "auto:fuelEfficiency",
+      "@type": "xsd:integer"
+    },
+    "city_fuel_economy": {
+      "@id": "mc:cityFuelEconomy",
+      "@type": "xsd:integer"
+    },
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "website": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "dealer_type": {
+      "@id": "mc:dealerType",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:float"
+    },
+    "longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:float"
+    },
+    "phone": {
+      "@id": "schema:telephone",
+      "@type": "xsd:string"
+    },
+    "franchises": {
+      "@id": "mc:dealerFranchises",
+      "@container": "@list"
+    },
+
+    "num_found": {
+      "@id": "mc:totalResults",
+      "@type": "xsd:integer"
+    },
+    "listings": {
+      "@id": "mc:listings",
+      "@container": "@list"
+    },
+    "stats": {
+      "@id": "mc:searchStatistics"
+    },
+    "facets": {
+      "@id": "mc:searchFacets"
+    },
+
+    "mds": {
+      "@id": "mc:marketDaysSupply",
+      "@type": "xsd:decimal"
+    },
+    "supply": {
+      "@id": "mc:supplyCount",
+      "@type": "xsd:integer"
+    },
+    "sales_per_day": {
+      "@id": "mc:salesPerDay",
+      "@type": "xsd:decimal"
+    },
+
+    "avg_price": {
+      "@id": "mc:averagePrice",
+      "@type": "xsd:decimal"
+    },
+    "avg_miles": {
+      "@id": "mc:averageMileage",
+      "@type": "xsd:decimal"
+    },
+    "avg_dom": {
+      "@id": "mc:averageDaysOnMarket",
+      "@type": "xsd:decimal"
+    },
+    "num_listings": {
+      "@id": "mc:listingCount",
+      "@type": "xsd:integer"
+    },
+
+    "photo_links": {
+      "@id": "mc:photoUrls",
+      "@container": "@list"
+    },
+    "photo_count": {
+      "@id": "mc:photoCount",
+      "@type": "xsd:integer"
+    },
+    "html": {
+      "@id": "mc:cachedHtml",
+      "@type": "xsd:string"
+    },
+    "seller_comments": {
+      "@id": "mc:sellerComments",
+      "@type": "xsd:string"
+    },
+    "options": {
+      "@id": "mc:vehicleOptions",
+      "@container": "@list"
+    },
+    "features": {
+      "@id": "mc:vehicleFeatures",
+      "@container": "@list"
+    },
+
+    "overall_rating": {
+      "@id": "schema:ratingValue",
+      "@type": "xsd:decimal"
+    },
+    "item": {
+      "@id": "mc:facetValue",
+      "@type": "xsd:string"
+    },
+    "count": {
+      "@id": "mc:facetCount",
+      "@type": "xsd:integer"
+    }
+  }
+}
