@@ -1,0 +1,183 @@
+name: MarketCheck API FinOps Framework
+description: >-
+  FinOps guidance for managing MarketCheck API costs using the FinOps Foundation
+  Framework 1.0 FOCUS-aligned principles. MarketCheck's blended pricing model
+  (flat subscription + per-call data costs) requires active cost visibility,
+  allocation, and optimization practices to avoid unexpected overages.
+version: '1.0'
+framework: FinOps Foundation Framework 1.0 (FOCUS-aligned)
+url: https://www.marketcheck.com/apis/pricing/
+
+# ── INFORM ────────────────────────────────────────────────────────────────────
+inform:
+
+  costVisibility:
+    description: >-
+      Establish real-time visibility into MarketCheck API spending across both
+      subscription fees and per-call data costs.
+    actions:
+      - Enable quota alert emails at 75%, 90%, and 100% thresholds via the
+        MarketCheck Universe Portal (https://universe.marketcheck.com/)
+      - Tag API keys by team, product, or environment (production vs staging)
+        to attribute data costs to business units
+      - Export monthly invoices from the Universe Portal for reconciliation
+      - Track per-endpoint call volumes against per-call pricing to identify
+        high-cost endpoints (e.g., Dealer Inventory Syndication at $1.00/call)
+
+  pricingModel:
+    subscriptionFee:
+      description: Fixed monthly fee governing access tier and rate limits
+      tiers:
+        - name: Free
+          monthlyFee: 0
+        - name: Basic
+          monthlyFee: 299
+        - name: Standard
+          monthlyFee: 749
+        - name: Enterprise
+          monthlyFee: custom
+    dataCosts:
+      description: Variable per-call charges on top of subscription fee
+      range:
+        low: 0.001
+        high: 1.00
+        currency: USD
+        unit: per API call
+      highCostEndpoints:
+        - endpoint: Dealer Inventory Syndication
+          pricePerCall: 1.00
+        - endpoint: CarsXE Plate to VIN
+          pricePerCall: 0.70
+        - endpoint: VINData Title Check
+          pricePerCall: 0.49
+        - endpoint: OEM Incentive Search
+          pricePerCall: 0.20
+    earlyBillingTrigger:
+      threshold: 1000
+      currency: USD
+      note: >-
+        Accumulated data costs exceeding $1,000 within a billing cycle trigger
+        early billing. Monitor closely to avoid unexpected mid-month charges.
+
+  budgetAllocations:
+    - category: Subscription Fee
+      costType: fixed
+      billingCycle: monthly
+      note: Predictable fixed cost; plan upgrades trigger immediately
+    - category: Data Costs
+      costType: variable
+      billingCycle: monthly
+      note: >-
+        Variable based on call volume and endpoint mix. High-variance category
+        requiring active monitoring.
+    - category: Third-Party API Pass-Through
+      costType: variable
+      note: >-
+        AutoRecalls, VINData, and CarsXE calls carry premium per-call rates
+        as MarketCheck passes through third-party costs.
+
+# ── OPTIMIZE ──────────────────────────────────────────────────────────────────
+optimize:
+
+  endpointOptimization:
+    description: Select the most cost-effective endpoint for each use case
+    recommendations:
+      - useCase: Bulk inventory retrieval
+        recommendation: >-
+          Use /v2/search/car/active with pagination rather than
+          Dealer Inventory Syndication ($1.00/call) unless bulk delivery
+          format is required.
+      - useCase: VIN decoding at scale
+        recommendation: >-
+          Use Basic VIN Decoder ($0.0015/call) unless enhanced build data
+          is required; avoid NeoVIN ($0.08/call) for standard spec lookups.
+      - useCase: Price prediction
+        recommendation: >-
+          Use MarketCheck Price US USED Base ($0.07/call) for simple
+          valuations; upgrade to Premium Plus ($0.13/call) only when
+          comparable vehicles are needed by the end user.
+      - useCase: Vehicle images
+        recommendation: >-
+          Prefer Cached Images ($0.001/call) over live image fetches for
+          repeated display of the same listing.
+
+  caching:
+    description: >-
+      Cache frequently accessed data to reduce redundant API calls and
+      associated data costs.
+    recommendations:
+      - Cache VIN decode results (vehicle specs rarely change)
+      - Cache dealer profile data (update daily, not per request)
+      - Cache Market Days Supply (MDS) values for non-real-time dashboards
+      - Cache OEM incentive data with a TTL of 24 hours (programs change daily)
+      - Set appropriate TTLs for inventory searches based on freshness needs
+
+  tierRightSizing:
+    description: Match subscription tier to actual usage patterns
+    recommendations:
+      - Free: Suitable only for evaluation; 500 calls/month exhausted quickly
+      - Basic: Appropriate for low-volume apps under 5,000 calls/month needing
+          third-party API access
+      - Standard: Cost-effective at 40 RPS once data costs exceed the $749
+          subscription fee breakeven point vs Basic overage patterns
+      - Enterprise: Justified when radius restrictions (500 miles) block
+          business requirements or when bulk data delivery is needed
+
+  rateLimitManagement:
+    description: >-
+      Implement client-side throttling to stay within tier rate limits and
+      avoid 429 errors that waste retry budget.
+    recommendations:
+      - Implement exponential backoff with jitter for 429 responses
+      - Use token bucket or leaky bucket algorithms for client-side rate limiting
+      - Distribute requests evenly across the second window; avoid burst patterns
+      - Monitor X-RateLimit-Remaining response headers to throttle proactively
+
+# ── OPERATE ───────────────────────────────────────────────────────────────────
+operate:
+
+  governance:
+    description: Establish policies for API key management and cost accountability
+    actions:
+      - Create separate API keys per environment (production, staging, dev)
+      - Rotate API keys quarterly and immediately upon team member offboarding
+      - Assign API key ownership to a named team or cost center
+      - Set budget alerts at $500 and $800 to intervene before $1,000 early billing
+
+  anomalyDetection:
+    description: Detect unexpected spikes in API usage that signal bugs or abuse
+    signals:
+      - Quota consumption reaching 75% before mid-month
+      - Sudden increase in high-cost endpoint calls (Syndication, VINData)
+      - 429 error rate increase indicating client-side throttling failures
+      - Per-call volume spikes on third-party endpoints (CarsXE, AutoRecalls)
+
+  reporting:
+    description: Monthly FinOps review cadence for MarketCheck API spend
+    cadence: monthly
+    metrics:
+      - Total subscription fee paid
+      - Total data costs by endpoint category
+      - Cost per business unit or product line (via API key tagging)
+      - Calls per endpoint vs prior month (volume trending)
+      - Average cost per API call (blended)
+      - 429 error rate (efficiency indicator)
+      - Third-party API spend as percentage of total data costs
+
+  unitEconomics:
+    description: >-
+      Map MarketCheck API costs to business outcomes for ROI measurement.
+    examples:
+      - metric: Cost per VIN decoded
+        formula: total_vin_decoder_costs / total_vins_decoded
+      - metric: Cost per inventory listing retrieved
+        formula: total_inventory_search_costs / total_listings_returned
+      - metric: Cost per price estimate generated
+        formula: total_price_api_costs / total_estimates_generated
+      - metric: Cost per vehicle history report
+        formula: total_history_api_costs / total_reports_generated
+
+  contacts:
+    support: https://www.marketcheck.com/support/
+    portal: https://universe.marketcheck.com/
+    enterpriseSales: https://www.marketcheck.com/apis/pricing/

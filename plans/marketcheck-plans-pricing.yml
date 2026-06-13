@@ -1,0 +1,153 @@
+name: MarketCheck API Plans and Pricing
+description: >-
+  MarketCheck uses a blended pricing model combining a flat monthly subscription
+  fee with per-call data costs. The subscription tier governs speed (requests
+  per second) and monthly quota, while data costs vary by API endpoint type.
+  Billing occurs monthly at the start of each cycle; accounts exceeding $1,000
+  in data costs within a cycle are billed early.
+version: '0.1'
+url: https://www.marketcheck.com/apis/pricing/
+
+plans:
+
+  - name: Free
+    description: >-
+      Entry-level access for developers evaluating the MarketCheck APIs.
+      Limited to 500 API calls per month and 5 calls per second. Includes a
+      100-mile radius restriction on geographic searches.
+    monthlyFee: 0
+    currency: USD
+    quota:
+      callsPerMonth: 500
+      radiusRestrictionMiles: 100
+      paginationRows: 500
+    rateLimits:
+      requestsPerSecond: 5
+    features:
+      - Access to core car inventory search endpoints
+      - Basic VIN decode
+    dataCosts:
+      note: Per-call data costs apply on top of subscription fee
+
+  - name: Basic
+    description: >-
+      Production-ready tier for small businesses and startups. Includes 5,000
+      API calls per month, 5 calls per second, access to all endpoints including
+      third-party APIs, and expanded pagination.
+    monthlyFee: 299
+    currency: USD
+    quota:
+      callsPerMonth: 5000
+      radiusRestrictionMiles: 100
+      paginationRows: 1500
+    rateLimits:
+      requestsPerSecond: 5
+    features:
+      - Access to all API endpoints
+      - Third-party API access (AutoRecalls, VINData, CarsXE)
+      - Expanded pagination (1,500 rows)
+    dataCosts:
+      note: Per-call data costs apply on top of subscription fee
+
+  - name: Standard
+    description: >-
+      High-throughput tier for scaling applications. Unlimited API calls with
+      40 requests per second, expanded geographic radius, and white-label search
+      access included.
+    monthlyFee: 749
+    currency: USD
+    quota:
+      callsPerMonth: unlimited
+      radiusRestrictionMiles: 500
+      paginationRows: 1500
+    rateLimits:
+      requestsPerSecond: 40
+    features:
+      - Unlimited API calls (pay-per-use data costs)
+      - White-label search access
+      - 500-mile radius searches
+      - All Basic plan features
+    dataCosts:
+      note: Per-call data costs apply on top of subscription fee
+
+  - name: Enterprise
+    description: >-
+      Custom enterprise tier for large-scale deployments requiring no radius
+      restrictions, bulk data delivery, custom reports, and dedicated support
+      with customizable rate limits.
+    monthlyFee: custom
+    currency: USD
+    quota:
+      callsPerMonth: unlimited
+      radiusRestrictionMiles: none
+    rateLimits:
+      requestsPerSecond: custom
+    features:
+      - Unlimited API calls with no radius restrictions
+      - Custom rate limits (via support)
+      - Custom reports
+      - Full bulk data delivery
+      - Comprehensive data access
+      - Dedicated account support
+    dataCosts:
+      note: Custom negotiated per-call pricing
+
+dataCostsByEndpoint:
+
+  carAPIs:
+    - endpoint: Inventory Search
+      pricePerCall: 0.002
+    - endpoint: VIN History
+      pricePerCall: 0.006
+    - endpoint: Dealer
+      pricePerCall: 0.0025
+    - endpoint: Basic VIN Decoder
+      pricePerCall: 0.0015
+    - endpoint: Enhanced VIN Decoder (Epi)
+      pricePerCall: 0.08
+    - endpoint: NeoVIN Enhanced Decoder
+      pricePerCall: 0.08
+    - endpoint: Cars Market (MDS)
+      pricePerCall: 0.006
+    - endpoint: Private Party Inventory Search
+      pricePerCall: 0.01
+    - endpoint: Auction Inventory Search
+      pricePerCall: 0.008
+    - endpoint: Dealer Recent Inventory Search
+      pricePerCall: 0.006
+    - endpoint: Dealer Inventory Syndication
+      pricePerCall: 1.00
+    - endpoint: OEM Incentive Search
+      pricePerCall: 0.20
+    - endpoint: Cached Images
+      pricePerCall: 0.001
+    - endpoint: MarketCheck Price US USED Base
+      pricePerCall: 0.07
+    - endpoint: MarketCheck Price US USED Premium
+      pricePerCall: 0.09
+    - endpoint: MarketCheck Price US USED Premium Plus
+      pricePerCall: 0.13
+
+  rvAPIs:
+    - endpoint: RV Inventory Search
+      pricePerCall: 0.002
+    - endpoint: RV Dealer
+      pricePerCall: 0.0025
+
+  thirdPartyAPIs:
+    - endpoint: AutoRecalls
+      pricePerCall: 0.07
+    - endpoint: VINData Title Check
+      pricePerCall: 0.49
+    - endpoint: CarsXE Plate to VIN
+      pricePerCall: 0.70
+
+billing:
+  cycle: monthly
+  billedAt: start_of_month
+  earlyBillingThreshold:
+    amount: 1000
+    currency: USD
+    note: Data costs exceeding $1,000 within a billing cycle are billed early
+  unusedQuotaRollover: false
+  quotaResetDate: first_of_calendar_month

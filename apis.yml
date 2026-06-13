@@ -1,0 +1,194 @@
+aid: marketcheck
+name: MarketCheck
+description: >-
+  MarketCheck is an automotive market data platform providing REST APIs for
+  accessing new and used vehicle listings, VIN decoding, market valuations,
+  dealer inventory, and vehicle history data. The platform aggregates billions
+  of data points from over 44,000 US and 3,500 Canadian dealerships, offering
+  daily-updated inventory search, price prediction, market days supply, OEM
+  incentives, auction listings, and third-party integrations for recalls, title
+  checks, and plate-to-VIN lookups.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/marketcheck/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Automotive
+  - Vehicle Data
+  - VIN Decoder
+  - Car Inventory
+  - Market Data
+  - Dealer Inventory
+  - Vehicle Valuation
+  - Vehicle History
+  - Price Analytics
+  - Automotive Intelligence
+
+apis:
+
+  - name: MarketCheck Cars API
+    description: >-
+      Search and retrieve active dealer car inventory, private party listings,
+      auction listings, and recent inventory. Supports layered filtering by
+      make, model, trim, price, mileage, location radius, and dealer attributes.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/cars/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - Car Inventory
+      - Vehicle Search
+      - Dealer Inventory
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+      - type: OpenAPI
+        url: https://documenter.getpostman.com/view/3967924/RW1hhvSR
+
+  - name: MarketCheck VIN Decoder API
+    description: >-
+      Decode 17-digit VINs to extract year, make, model, trim, installed
+      equipment, and full vehicle specifications. Available in Basic and
+      NeoVIN Enhanced tiers for comprehensive build-level data.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - VIN Decoder
+      - Vehicle Specifications
+      - Vehicle Data
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck Vehicle History API
+    description: >-
+      Access complete price history, odometer readings, and full listing details
+      for vehicles up to six years back by VIN, enabling market analysis and
+      vehicle valuation insights.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - Vehicle History
+      - Price History
+      - VIN
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck Price API
+    description: >-
+      Predict market prices and retrieve MSRP for used vehicles. Three tiers
+      available: Base (predicted price + MSRP), Premium (adds comparable
+      vehicles), and Premium Plus (adds full NeoVIN decode).
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/marketcheck-price/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - Vehicle Pricing
+      - Price Prediction
+      - Market Valuation
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck Dealer API
+    description: >-
+      Search individual dealerships or locate multiple dealerships in a
+      geographic area by radius. Access dealer profiles, inventory counts,
+      and dealership group information.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - Dealer Data
+      - Dealership Inventory
+      - Geographic Search
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck Market Insights API
+    description: >-
+      Obtain Market Days Supply (MDS) values, sales statistics, and popular
+      vehicle data to understand supply and demand dynamics across the
+      automotive market.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - Market Analytics
+      - Market Days Supply
+      - Sales Data
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck OEM Incentives API
+    description: >-
+      Search incentive programs from 30+ car manufacturers by make, zip code,
+      and other criteria to surface OEM financing, rebate, and lease offers.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - OEM Incentives
+      - Automotive Incentives
+      - Financing
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+  - name: MarketCheck RV API
+    description: >-
+      Search recreational vehicle (RV) inventory and dealer listings across
+      the US and Canada. Supports filtering by price, options, photos, and
+      equipment details.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.marketcheck.com/apis/
+    baseURL: https://mc-api.marketcheck.com
+    tags:
+      - RV
+      - Recreational Vehicles
+      - Inventory Search
+    properties:
+      - type: Documentation
+        url: https://docs.marketcheck.com/docs/api/cars
+
+common:
+
+  - type: Website
+    url: https://www.marketcheck.com/
+
+  - type: Documentation
+    url: https://docs.marketcheck.com/docs
+
+  - type: GitHubOrg
+    url: https://github.com/MarketcheckCarsInc
+
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/marketcheckdata
+
+  - type: Blog
+    url: https://www.marketcheck.com/category/automotive-api/
+
+  - type: Pricing
+    url: https://www.marketcheck.com/apis/pricing/
+
+  - type: X
+    url: https://x.com/MarketCheckCars
+
+  - type: Plans
+    url: plans/marketcheck-plans-pricing.yml
+
+  - type: RateLimits
+    url: rate-limits/marketcheck-rate-limits.yml
+
+  - type: FinOps
+    url: finops/marketcheck-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

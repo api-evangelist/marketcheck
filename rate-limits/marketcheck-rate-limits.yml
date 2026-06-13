@@ -1,0 +1,102 @@
+name: MarketCheck API Rate Limits
+description: >-
+  MarketCheck enforces two categories of API access constraints: rate limits
+  (requests per second, per account) and monthly quotas (total calls per
+  billing cycle). Rate limit violations and quota exhaustion both return HTTP
+  429 Too Many Requests with descriptive headers. Limits are enforced at the
+  account level across all API keys under that account.
+version: '0.1'
+url: https://docs.marketcheck.com/docs/get-started/api/quota-and-rate-limits
+
+rateLimits:
+
+  - tier: Free
+    requestsPerSecond: 5
+    scope: per-account
+    enforcement: per-second sliding window
+    onExceed:
+      httpStatus: 429
+      message: Too Many Requests
+
+  - tier: Basic
+    requestsPerSecond: 5
+    scope: per-account
+    enforcement: per-second sliding window
+    onExceed:
+      httpStatus: 429
+      message: Too Many Requests
+
+  - tier: Standard
+    requestsPerSecond: 40
+    scope: per-account
+    enforcement: per-second sliding window
+    onExceed:
+      httpStatus: 429
+      message: Too Many Requests
+
+  - tier: Enterprise
+    requestsPerSecond: custom
+    scope: per-account
+    enforcement: per-second sliding window
+    note: Customizable via support team
+    onExceed:
+      httpStatus: 429
+      message: Too Many Requests
+
+quotas:
+
+  - tier: Free
+    callsPerMonth: 500
+    resetDate: first of each calendar month
+    unusedRollover: false
+    onExhaustion:
+      httpStatus: 429
+      message: Monthly quota exhausted; resets at start of next calendar month
+
+  - tier: Basic
+    callsPerMonth: 5000
+    resetDate: first of each calendar month
+    unusedRollover: false
+    onExhaustion:
+      httpStatus: 429
+      message: Monthly quota exhausted; resets at start of next calendar month
+
+  - tier: Standard
+    callsPerMonth: unlimited
+    note: Pay-per-use; no fixed monthly call ceiling
+    unusedRollover: false
+
+  - tier: Enterprise
+    callsPerMonth: unlimited
+    note: Pay-per-use with custom negotiated data pricing
+    unusedRollover: false
+
+headers:
+  description: >-
+    MarketCheck returns headers on all API responses to enable clients to
+    monitor remaining capacity and anticipate resets.
+  examples:
+    - X-RateLimit-Limit: requests per second allowed for current tier
+    - X-RateLimit-Remaining: remaining requests in current second window
+    - X-Quota-Limit: total monthly quota calls
+    - X-Quota-Remaining: remaining calls in current billing month
+    - X-Quota-Reset: timestamp when monthly quota resets
+
+monitoring:
+  description: >-
+    Users can configure email alerts through the MarketCheck Universe Portal
+    to receive notifications at defined consumption thresholds.
+  defaultThresholds:
+    - 75% of monthly quota consumed
+    - 90% of monthly quota consumed
+    - 100% of monthly quota consumed
+  portal: https://universe.marketcheck.com/
+
+authentication:
+  type: API Key
+  parameterName: api_key
+  parameterLocation: query string
+  note: >-
+    The API key must be included as the api_key query parameter in every
+    request. Keys are managed through the MarketCheck Universe portal.
+  signupUrl: https://universe.marketcheck.com/
