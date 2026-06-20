@@ -9,7 +9,7 @@ description: >-
   incentives, auction listings, and third-party integrations for recalls, title
   checks, and plate-to-VIN lookups.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/marketcheck/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -33,7 +33,7 @@ apis:
       Search and retrieve active dealer car inventory, private party listings,
       auction listings, and recent inventory. Supports layered filtering by
       make, model, trim, price, mileage, location radius, and dealer attributes.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/cars/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -51,7 +51,7 @@ apis:
       Decode 17-digit VINs to extract year, make, model, trim, installed
       equipment, and full vehicle specifications. Available in Basic and
       NeoVIN Enhanced tiers for comprehensive build-level data.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -67,7 +67,7 @@ apis:
       Access complete price history, odometer readings, and full listing details
       for vehicles up to six years back by VIN, enabling market analysis and
       vehicle valuation insights.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -83,7 +83,7 @@ apis:
       Predict market prices and retrieve MSRP for used vehicles. Three tiers
       available: Base (predicted price + MSRP), Premium (adds comparable
       vehicles), and Premium Plus (adds full NeoVIN decode).
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/marketcheck-price/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -99,7 +99,7 @@ apis:
       Search individual dealerships or locate multiple dealerships in a
       geographic area by radius. Access dealer profiles, inventory counts,
       and dealership group information.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -115,7 +115,7 @@ apis:
       Obtain Market Days Supply (MDS) values, sales statistics, and popular
       vehicle data to understand supply and demand dynamics across the
       automotive market.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -130,7 +130,7 @@ apis:
     description: >-
       Search incentive programs from 30+ car manufacturers by make, zip code,
       and other criteria to surface OEM financing, rebate, and lease offers.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
@@ -146,7 +146,7 @@ apis:
       Search recreational vehicle (RV) inventory and dealer listings across
       the US and Canada. Supports filtering by price, options, photos, and
       equipment details.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.marketcheck.com/apis/
     baseURL: https://mc-api.marketcheck.com
     tags:
