@@ -159,6 +159,8 @@ apis:
 
 common:
 
+  - type: DomainSecurity
+    url: security/marketcheck-domain-security.yml
   - type: Website
     url: https://www.marketcheck.com/
 
