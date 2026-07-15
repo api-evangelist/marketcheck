@@ -159,6 +159,8 @@ apis:
 
 common:
 
+  - type: AgenticAccess
+    url: agentic-access/marketcheck-agentic-access.yml
   - type: DomainSecurity
     url: security/marketcheck-domain-security.yml
   - type: Website
