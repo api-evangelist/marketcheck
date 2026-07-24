@@ -1,0 +1,478 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: Dealer
+  description: Dealer search and information
+paths:
+  /dealer/{dealer_id}:
+    get:
+      tags:
+      - Dealer
+      summary: Dealer by id
+      operationId: getDealer
+      description: Get a particular dealer's information by its id
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Dealer id to get all the dealer info attributes
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with dealer information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+        '404':
+          description: Dealer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /dealer/{dealer_id}/active/inventory:
+    get:
+      tags:
+      - Dealer
+      summary: Dealer inventory
+      operationId: getDealerActiveInventory
+      description: Get a dealer's currently active inventory
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Id representing the dealer to fetch the active inventory for
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: rows
+        in: query
+        description: Number of results to return. Default is 10. Max is 50.
+        schema:
+          type: integer
+          default: 10
+          maximum: 50
+      - name: start
+        in: query
+        description: Page number to fetch the results for the given criteria. Default is 1.
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Successful response with dealer active inventory
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseListing'
+  /dealer/{dealer_id}/historical/inventory:
+    get:
+      tags:
+      - Dealer
+      summary: Dealer's historical inventory
+      operationId: getDealerHistoricalInventory
+      description: '[v1 : Not Implemented Yet] - Get a dealer''s historical inventory'
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Id representing the dealer to fetch the historical inventory for
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with dealer historical inventory
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseListing'
+  /dealer/{dealer_id}/landing:
+    get:
+      tags:
+      - Dealer
+      summary: Experimental - Get cached version of dealer landing page by dealer id
+      operationId: getDealerLandingPage
+      description: Experimental - Get cached version of dealer landing page by dealer id
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Dealer id to get the landing page html for
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with dealer landing page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DealerLandingPage'
+  /dealer/{dealer_id}/ratings:
+    get:
+      tags:
+      - Dealer
+      summary: Dealer's Rating
+      operationId: getDealerRatings
+      description: '[MOCK] Get a dealer''s Rating'
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Id representing the dealer to fetch the ratings for
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with dealer rating
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DealerRating'
+  /dealer/{dealer_id}/reviews:
+    get:
+      tags:
+      - Dealer
+      summary: Dealer's Review
+      operationId: getDealerReviews
+      description: '[MOCK] Get a dealer''s Review'
+      parameters:
+      - name: dealer_id
+        in: path
+        required: true
+        description: Id representing the dealer to fetch the reviews for
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with dealer reviews
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DealerReview'
+  /dealers:
+    get:
+      tags:
+      - Dealer
+      summary: Find car dealers around
+      operationId: dealerSearch
+      description: The dealers API returns a list of dealers around a given point and radius. Max radius of only 50 miles is supported.
+      parameters:
+      - name: latitude
+        in: query
+        required: true
+        description: Latitude component of location
+        schema:
+          type: number
+          format: float
+      - name: longitude
+        in: query
+        required: true
+        description: Longitude component of location
+        schema:
+          type: number
+          format: float
+      - name: radius
+        in: query
+        required: true
+        description: Radius around the search location (max 50 miles)
+        schema:
+          type: integer
+          maximum: 50
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: rows
+        in: query
+        description: Number of results to return. Default is 10. Max is 50.
+        schema:
+          type: integer
+          default: 10
+          maximum: 50
+      - name: start
+        in: query
+        description: Offset for the search results. Default is 1.
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Successful response with dealers list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DealersResponse'
+components:
+  schemas:
+    Dealer:
+      type: object
+      description: Dealer information
+      properties:
+        id:
+          type: string
+          description: Unique dealer identifier
+        name:
+          type: string
+          description: Dealer name
+        website:
+          type: string
+          description: Dealer website URL
+        dealer_type:
+          type: string
+          description: Type of dealership
+        zip:
+          type: string
+          description: Dealer zip code
+        city:
+          type: string
+          description: Dealer city
+        state:
+          type: string
+          description: Dealer state
+        latitude:
+          type: number
+          description: Dealer latitude
+        longitude:
+          type: number
+          description: Dealer longitude
+        phone:
+          type: string
+          description: Dealer phone number
+        franchises:
+          type: array
+          items:
+            type: string
+          description: List of car franchises/makes the dealer carries
+    ReviewComponents:
+      type: object
+      description: Individual review data
+      properties:
+        rating:
+          type: number
+        title:
+          type: string
+        body:
+          type: string
+        author:
+          type: string
+        date:
+          type: string
+    DealerReview:
+      type: object
+      description: Dealer review information
+      properties:
+        dealer_id:
+          type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewComponents'
+    DealerLandingPage:
+      type: object
+      description: Dealer landing page content
+      properties:
+        dealer_id:
+          type: string
+        html:
+          type: string
+          description: Cached HTML content of the dealer landing page
+    BaseListing:
+      type: object
+      description: Base listing object containing minimal car listing information
+      properties:
+        id:
+          type: string
+          description: Unique listing identifier
+        vin:
+          type: string
+          description: Vehicle Identification Number
+        heading:
+          type: string
+          description: Listing heading / title
+        price:
+          type: number
+          description: Listed price in USD
+        miles:
+          type: integer
+          description: Odometer reading in miles
+        msrp:
+          type: number
+          description: Manufacturer Suggested Retail Price
+        data_source:
+          type: string
+          description: Source of the listing data
+        source_url:
+          type: string
+          description: URL to the original listing source
+        seller_type:
+          type: string
+          description: 'Type of seller: dealer, private, auction'
+          enum:
+          - dealer
+          - private
+          - auction
+        car_type:
+          type: string
+          description: Type of car listing
+          enum:
+          - new
+          - used
+          - certified
+        scraped_at:
+          type: integer
+          description: Unix timestamp when the listing was scraped
+        last_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was last seen
+        first_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was first seen
+        dom:
+          type: integer
+          description: Days on market
+        dom_180:
+          type: integer
+          description: Days on market in the last 180 days
+        dom_active:
+          type: integer
+          description: Active days on market
+        dealer_id:
+          type: string
+          description: Dealer identifier
+        ref_price:
+          type: number
+          description: Reference/comparison price
+        ref_miles:
+          type: number
+          description: Reference/comparison miles
+        ref_year:
+          type: integer
+          description: Reference year
+        build:
+          $ref: '#/components/schemas/Build'
+        dealer:
+          $ref: '#/components/schemas/Dealer'
+    DealersResponse:
+      type: object
+      description: Response from dealers search
+      properties:
+        num_found:
+          type: integer
+          description: Total number of dealers found
+        dealers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dealer'
+    Build:
+      type: object
+      description: Vehicle build/specification information decoded from VIN
+      properties:
+        year:
+          type: integer
+          description: Model year
+        make:
+          type: string
+          description: Vehicle make
+        model:
+          type: string
+          description: Vehicle model
+        trim:
+          type: string
+          description: Vehicle trim level
+        body_type:
+          type: string
+          description: Body type (sedan, SUV, truck, etc.)
+        vehicle_type:
+          type: string
+          description: Vehicle type classification
+        transmission:
+          type: string
+          description: Transmission type
+        drivetrain:
+          type: string
+          description: Drivetrain type (FWD, AWD, RWD, 4WD)
+        fuel_type:
+          type: string
+          description: Fuel type
+        engine:
+          type: string
+          description: Engine description
+        engine_size:
+          type: string
+          description: Engine displacement
+        cylinders:
+          type: integer
+          description: Number of cylinders
+        doors:
+          type: integer
+          description: Number of doors
+        made_in:
+          type: string
+          description: Country of manufacture
+        highway_fuel_economy:
+          type: integer
+          description: Highway fuel economy in MPG
+        city_fuel_economy:
+          type: integer
+          description: City fuel economy in MPG
+    RatingComponents:
+      type: object
+      description: Rating components breakdown
+      properties:
+        customer_service:
+          type: number
+        facilities:
+          type: number
+        overall_experience:
+          type: number
+        recommend_dealer:
+          type: number
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: integer
+          description: Error code
+    DealerRating:
+      type: object
+      description: Dealer rating information
+      properties:
+        dealer_id:
+          type: string
+        overall_rating:
+          type: number
+          description: Overall dealer rating
+        components:
+          $ref: '#/components/schemas/RatingComponents'
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars

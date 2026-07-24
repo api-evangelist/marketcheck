@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer VIN Decoder API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: VIN Decoder
+  description: VIN decoding and vehicle specifications
+paths:
+  /vin/{vin}/specs:
+    get:
+      tags:
+      - VIN Decoder
+      summary: VIN Decoder
+      operationId: decode
+      description: Get the basic information on specifications for a car identified by a valid VIN
+      parameters:
+      - name: vin
+        in: path
+        required: true
+        description: VIN to decode
+        schema:
+          type: string
+          minLength: 17
+          maxLength: 17
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with VIN decoded build information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+  /economy:
+    get:
+      tags:
+      - VIN Decoder
+      summary: Get Economy based on environmental factors
+      operationId: getEconomy
+      description: '[MOCK] Calculate Economy i.e. Environmental Friendliness'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which Environmental Economy data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with economy data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Economy'
+  /fuel_efficiency:
+    get:
+      tags:
+      - VIN Decoder
+      summary: Get fuel efficiency
+      operationId: getEfficiency
+      description: '[MOCK] Calculate fuel efficiency from taxonomy db mileage values'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which fuel data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with fuel efficiency data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelEfficiency'
+  /safety:
+    get:
+      tags:
+      - VIN Decoder
+      summary: Get Safety Rating
+      operationId: getSafetyRating
+      description: '[MOCK] Get Safety ratings from third party sources'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN to fetch the safety ratings
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with safety rating
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SafetyRating'
+components:
+  schemas:
+    Economy:
+      type: object
+      description: Environmental economy data for a vehicle
+      properties:
+        vin:
+          type: string
+        co2_five_year_cost:
+          type: number
+          description: CO2 cost over 5 years
+        energy_impact_score:
+          type: number
+          description: Energy impact score
+        ghg_score:
+          type: number
+          description: Greenhouse gas score
+        smog_score:
+          type: number
+          description: Smog emission score
+    FuelEfficiency:
+      type: object
+      description: Fuel efficiency data for a vehicle
+      properties:
+        vin:
+          type: string
+        highway:
+          type: number
+          description: Highway fuel efficiency in MPG
+        city:
+          type: number
+          description: City fuel efficiency in MPG
+        combined:
+          type: number
+          description: Combined fuel efficiency in MPG
+        annual_fuel_cost:
+          type: number
+          description: Estimated annual fuel cost in USD
+    Build:
+      type: object
+      description: Vehicle build/specification information decoded from VIN
+      properties:
+        year:
+          type: integer
+          description: Model year
+        make:
+          type: string
+          description: Vehicle make
+        model:
+          type: string
+          description: Vehicle model
+        trim:
+          type: string
+          description: Vehicle trim level
+        body_type:
+          type: string
+          description: Body type (sedan, SUV, truck, etc.)
+        vehicle_type:
+          type: string
+          description: Vehicle type classification
+        transmission:
+          type: string
+          description: Transmission type
+        drivetrain:
+          type: string
+          description: Drivetrain type (FWD, AWD, RWD, 4WD)
+        fuel_type:
+          type: string
+          description: Fuel type
+        engine:
+          type: string
+          description: Engine description
+        engine_size:
+          type: string
+          description: Engine displacement
+        cylinders:
+          type: integer
+          description: Number of cylinders
+        doors:
+          type: integer
+          description: Number of doors
+        made_in:
+          type: string
+          description: Country of manufacture
+        highway_fuel_economy:
+          type: integer
+          description: Highway fuel economy in MPG
+        city_fuel_economy:
+          type: integer
+          description: City fuel economy in MPG
+    SafetyRating:
+      type: object
+      description: Safety rating data from third party sources
+      properties:
+        vin:
+          type: string
+        overall_rating:
+          type: number
+          description: Overall safety rating
+        frontal_crash_rating:
+          type: string
+          description: Frontal crash test rating
+        side_crash_rating:
+          type: string
+          description: Side crash test rating
+        rollover_rating:
+          type: string
+          description: Rollover test rating
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars

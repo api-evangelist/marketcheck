@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer Facets API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: Facets
+  description: Search facets for filtering
+paths:
+  /facets:
+    get:
+      tags:
+      - Facets
+      summary: Facets
+      operationId: getFacets
+      description: '[Merged with the /search API - Please check the ''facets'' parameter to the Search API above] Get the facets for the given simple filter criteria (by given VIN''s basic specification, Or by Year, Make, Model, Trim criteria) and facet fields.'
+      parameters:
+      - name: fields
+        in: query
+        required: true
+        description: Comma separated list of fields to generate facets for. Supported fields are - year, make, model, trim, exterior_color, interior_color, drivetrain, vehicle_type, car_type, body_style, body_subtype, doors.
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: vin
+        in: query
+        description: VIN as a reference to the type of car for which facets data is to be returned
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: Year of the car
+        schema:
+          type: string
+      - name: make
+        in: query
+        description: Make of the car
+        schema:
+          type: string
+      - name: model
+        in: query
+        description: Model of the Car
+        schema:
+          type: string
+      - name: trim
+        in: query
+        description: Trim of the Car
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with facets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacetItem'
+components:
+  schemas:
+    FacetItem:
+      type: object
+      description: A facet item with field name, value, and count
+      properties:
+        item:
+          type: string
+          description: Facet value
+        count:
+          type: integer
+          description: Number of listings matching this facet value
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars

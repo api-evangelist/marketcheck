@@ -1,0 +1,765 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer Listings API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: Listings
+  description: Search and retrieve active car listings
+paths:
+  /search:
+    get:
+      tags:
+      - Listings
+      summary: Gets active car listings for the given search criteria
+      operationId: search
+      description: This endpoint is the meat of the API and serves many purposes. This API produces a list of currently active cars from the market for the given search criteria. The API results are limited to allow pagination upto 1000 rows. The search API facilitates the following use cases - 1. Search Cars around a given geo-point within a given radius 2. Search cars for a specific year / make / model or combination of these 3. Search cars matching multiple year, make, model combinations in the same search request 4. Filter results by most car specification attributes 5. Search for similar cars by VIN or Taxonomy VIN 6. Filter cars within a given price / miles / days on market (dom) range 7. Specify a sort order for the results on price / miles / dom / listed date 8. Search cars for a given City / State combination 9. Get Facets to build the search drill downs 10. Get Market averages for price/miles/dom/msrp for your search
+      parameters:
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        description: Latitude component of location
+        schema:
+          type: number
+          format: float
+      - name: longitude
+        in: query
+        description: Longitude component of location
+        schema:
+          type: number
+          format: float
+      - name: radius
+        in: query
+        description: Radius around the search location
+        schema:
+          type: integer
+      - name: car_type
+        in: query
+        description: 'Car type. Allowed values are: new / used / certified'
+        schema:
+          type: string
+          enum:
+          - new
+          - used
+          - certified
+      - name: seller_type
+        in: query
+        description: Seller type to filter cars on. You can pass in multiple seller type values comma separated.
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: Car year - 1980 onwards. You can pass in multiple year values comma separated.
+        schema:
+          type: string
+      - name: make
+        in: query
+        description: Car Make - should be a standard OEM Make name. You can pass in multiple make values separated by comma. e.g. ford,audi
+        schema:
+          type: string
+      - name: model
+        in: query
+        description: Car model to search. You can pass in multiple model values comma separated for e.g f-150,Mustang.
+        schema:
+          type: string
+      - name: trim
+        in: query
+        description: Car trim to search. You can pass in multiple trim values comma separated.
+        schema:
+          type: string
+      - name: dealer_id
+        in: query
+        description: Dealer id to filter the cars.
+        schema:
+          type: string
+      - name: vin
+        in: query
+        description: Car vin to search
+        schema:
+          type: string
+      - name: source
+        in: query
+        description: Source to search cars. You can pass in multiple source values comma separated.
+        schema:
+          type: string
+      - name: body_type
+        in: query
+        description: Body type to filter the cars on. You can pass in multiple body types comma separated.
+        schema:
+          type: string
+      - name: body_subtype
+        in: query
+        description: Body subtype to filter the cars on. You can pass in multiple body subtype values comma separated.
+        schema:
+          type: string
+      - name: vehicle_type
+        in: query
+        description: Vehicle type to filter the cars on. You can pass in multiple vehicle type values comma separated.
+        schema:
+          type: string
+      - name: vins
+        in: query
+        description: Comma separated list of 17 digit vins to search the matching cars for. Only 10 VINs allowed per request.
+        schema:
+          type: string
+      - name: taxonomy_vins
+        in: query
+        description: Comma separated list of 10 letter taxonomy VINs (first 8 + 10th + 11th chars of 17-digit VIN).
+        schema:
+          type: string
+      - name: ymmt
+        in: query
+        description: Comma separated list of Year|Make|Model|Trim combinations. e.g. 2010|Audi|A5,2014|Nissan|Sentra|S 6MT
+        schema:
+          type: string
+      - name: match
+        in: query
+        description: Comma separated list of fields for exact matching (year,make,model,trim).
+        schema:
+          type: string
+      - name: cylinders
+        in: query
+        description: Cylinders to filter the cars on. You can pass in multiple cylinder values comma separated.
+        schema:
+          type: string
+      - name: transmission
+        in: query
+        description: Transmission to filter the cars on. [a = Automatic, m = Manual].
+        schema:
+          type: string
+      - name: speeds
+        in: query
+        description: Speeds to filter the cars on. You can pass in multiple speeds values comma separated.
+        schema:
+          type: string
+      - name: doors
+        in: query
+        description: Doors to filter the cars on. You can pass in multiple doors values comma separated.
+        schema:
+          type: string
+      - name: drivetrain
+        in: query
+        description: Drivetrain to filter the cars on. You can pass in multiple drivetrain values comma separated.
+        schema:
+          type: string
+      - name: exterior_color
+        in: query
+        description: Exterior color to match. You can pass in multiple exterior color values comma separated.
+        schema:
+          type: string
+      - name: interior_color
+        in: query
+        description: Interior color to match. You can pass in multiple interior color values comma separated.
+        schema:
+          type: string
+      - name: engine
+        in: query
+        description: Filter listings on engine
+        schema:
+          type: string
+      - name: engine_type
+        in: query
+        description: Engine Type to match. You can pass in multiple engine type values comma separated.
+        schema:
+          type: string
+      - name: engine_aspiration
+        in: query
+        description: Engine Aspiration to match. You can pass in multiple Engine aspiration values comma separated.
+        schema:
+          type: string
+      - name: engine_block
+        in: query
+        description: Engine Block to match. You can pass in multiple Engine Block values comma separated.
+        schema:
+          type: string
+      - name: miles_range
+        in: query
+        description: 'Miles range to filter cars with miles in the given range. Range to be given in the format: min-max e.g. 1000-5000'
+        schema:
+          type: string
+      - name: price_range
+        in: query
+        description: 'Price range to filter cars with the price in the range given. Range to be given in the format: min-max e.g. 1000-5000'
+        schema:
+          type: string
+      - name: dom_range
+        in: query
+        description: 'Days on Market range to filter cars with the DOM within the given range. Range to be given in the format: min-max e.g. 10-50'
+        schema:
+          type: string
+      - name: sort_by
+        in: query
+        description: Sort by field - allowed fields are distance|price|miles|dom|age|posted_at|year. Default sort field is distance from the given point.
+        schema:
+          type: string
+          enum:
+          - distance
+          - price
+          - miles
+          - dom
+          - age
+          - posted_at
+          - year
+      - name: sort_order
+        in: query
+        description: Sort order - asc or desc. Default sort order is distance from a point.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: rows
+        in: query
+        description: Number of results to return. Default is 10. Max is 50.
+        schema:
+          type: integer
+          default: 10
+          maximum: 50
+      - name: start
+        in: query
+        description: Page number to fetch the results for the given criteria. Default is 1. Pagination is allowed only till first 1000 results.
+        schema:
+          type: integer
+          default: 1
+      - name: facets
+        in: query
+        description: The comma separated list of fields for which facets are requested. Supported fields are - year, make, model, trim, vehicle_type, car_type, body_type, body_subtype, drivetrain, cylinders, transmission, exterior_color, interior_color, doors, engine_type, engine_aspiration, engine_block.
+        schema:
+          type: string
+      - name: stats
+        in: query
+        description: The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom.
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: Filter on Country, by default US. Search available on US (United States) and CA (Canada).
+        schema:
+          type: string
+          enum:
+          - US
+          - CA
+          default: US
+      - name: plot
+        in: query
+        description: If plot has value true results in around 25k coordinates with limited fields to plot respective graph.
+        schema:
+          type: string
+      - name: nodedup
+        in: query
+        description: If nodedup is set to true then will give results using is_searchable.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Filter listings on State.
+        schema:
+          type: string
+      - name: city
+        in: query
+        description: Filter listings on city.
+        schema:
+          type: string
+      - name: dealer_name
+        in: query
+        description: Filter listings on dealer_name.
+        schema:
+          type: string
+      - name: trim_o
+        in: query
+        description: Filter listings on web scraped trim.
+        schema:
+          type: string
+      - name: trim_r
+        in: query
+        description: Filter trim on custom possible matches.
+        schema:
+          type: string
+      - name: dom_active_range
+        in: query
+        description: 'Active Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50'
+        schema:
+          type: string
+      - name: dom_180_range
+        in: query
+        description: 'Last 180 Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50'
+        schema:
+          type: string
+      - name: options
+        in: query
+        description: Tokenizer search on options. For multiple options use | as separator.
+        schema:
+          type: string
+      - name: features
+        in: query
+        description: Tokenizer search on features. For multiple options use | as separator.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /listing/{id}:
+    get:
+      tags:
+      - Listings
+      summary: Listing by id
+      operationId: getListing
+      description: Get a particular listing by its id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Listing id to get all the listing attributes
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with listing details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /listing/{id}/extra:
+    get:
+      tags:
+      - Listings
+      summary: Long text Listings attributes for Listing with the given id
+      operationId: getListingExtra
+      description: Get listing options, features, seller comments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Listing id to get all the long text listing attributes
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with extra listing attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingExtraAttributes'
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /listing/{id}/media:
+    get:
+      tags:
+      - Listings
+      summary: Listing media by id
+      operationId: getListingMedia
+      description: Get listing media (photo, photos) by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Listing id to get all the listing attributes
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with listing media
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingMedia'
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /listing/{id}/vdp:
+    get:
+      tags:
+      - Listings
+      summary: Get listing HTML
+      operationId: getListingVDP
+      description: Cached HTML of the Vehicle Details Page (VDP) for the listing. The HTML is cached only for 7 days for all listings.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Listing id to get the vehicle details page (VDP) HTML
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: html
+        in: query
+        description: Get only HTML for given listings VDP page
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with VDP HTML
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingVDP'
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /vin_report_summary:
+    get:
+      tags:
+      - Listings
+      summary: Get Summary Report
+      operationId: getSummaryReport
+      description: Generate Summary report for a given VIN
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which Summary data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with summary report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VinReport'
+components:
+  schemas:
+    Dealer:
+      type: object
+      description: Dealer information
+      properties:
+        id:
+          type: string
+          description: Unique dealer identifier
+        name:
+          type: string
+          description: Dealer name
+        website:
+          type: string
+          description: Dealer website URL
+        dealer_type:
+          type: string
+          description: Type of dealership
+        zip:
+          type: string
+          description: Dealer zip code
+        city:
+          type: string
+          description: Dealer city
+        state:
+          type: string
+          description: Dealer state
+        latitude:
+          type: number
+          description: Dealer latitude
+        longitude:
+          type: number
+          description: Dealer longitude
+        phone:
+          type: string
+          description: Dealer phone number
+        franchises:
+          type: array
+          items:
+            type: string
+          description: List of car franchises/makes the dealer carries
+    SearchResponse:
+      type: object
+      description: Response object from search API
+      properties:
+        num_found:
+          type: integer
+          description: Total number of listings found
+        listings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+        stats:
+          type: object
+          description: Statistics for the search results
+          additionalProperties: true
+        facets:
+          type: object
+          description: Facets for the search results
+          additionalProperties: true
+    ListingMedia:
+      type: object
+      description: Media assets associated with a listing
+      properties:
+        id:
+          type: string
+        photo_links:
+          type: array
+          items:
+            type: string
+          description: List of photo URLs
+        photo_count:
+          type: integer
+          description: Total number of photos
+    VinReport:
+      type: object
+      description: Summary report for a VIN
+      properties:
+        vin:
+          type: string
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_active_listings:
+          type: integer
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/BaseListing'
+      type: object
+      description: Full listing object with all attributes
+      properties:
+        vdp_url:
+          type: string
+          description: URL to the Vehicle Details Page
+        stock_no:
+          type: string
+          description: Dealer stock number
+        inventory_type:
+          type: string
+          description: Inventory classification
+    ListingVDP:
+      type: object
+      description: Vehicle Details Page HTML content
+      properties:
+        id:
+          type: string
+        html:
+          type: string
+          description: Cached HTML content of the Vehicle Details Page
+    BaseListing:
+      type: object
+      description: Base listing object containing minimal car listing information
+      properties:
+        id:
+          type: string
+          description: Unique listing identifier
+        vin:
+          type: string
+          description: Vehicle Identification Number
+        heading:
+          type: string
+          description: Listing heading / title
+        price:
+          type: number
+          description: Listed price in USD
+        miles:
+          type: integer
+          description: Odometer reading in miles
+        msrp:
+          type: number
+          description: Manufacturer Suggested Retail Price
+        data_source:
+          type: string
+          description: Source of the listing data
+        source_url:
+          type: string
+          description: URL to the original listing source
+        seller_type:
+          type: string
+          description: 'Type of seller: dealer, private, auction'
+          enum:
+          - dealer
+          - private
+          - auction
+        car_type:
+          type: string
+          description: Type of car listing
+          enum:
+          - new
+          - used
+          - certified
+        scraped_at:
+          type: integer
+          description: Unix timestamp when the listing was scraped
+        last_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was last seen
+        first_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was first seen
+        dom:
+          type: integer
+          description: Days on market
+        dom_180:
+          type: integer
+          description: Days on market in the last 180 days
+        dom_active:
+          type: integer
+          description: Active days on market
+        dealer_id:
+          type: string
+          description: Dealer identifier
+        ref_price:
+          type: number
+          description: Reference/comparison price
+        ref_miles:
+          type: number
+          description: Reference/comparison miles
+        ref_year:
+          type: integer
+          description: Reference year
+        build:
+          $ref: '#/components/schemas/Build'
+        dealer:
+          $ref: '#/components/schemas/Dealer'
+    Build:
+      type: object
+      description: Vehicle build/specification information decoded from VIN
+      properties:
+        year:
+          type: integer
+          description: Model year
+        make:
+          type: string
+          description: Vehicle make
+        model:
+          type: string
+          description: Vehicle model
+        trim:
+          type: string
+          description: Vehicle trim level
+        body_type:
+          type: string
+          description: Body type (sedan, SUV, truck, etc.)
+        vehicle_type:
+          type: string
+          description: Vehicle type classification
+        transmission:
+          type: string
+          description: Transmission type
+        drivetrain:
+          type: string
+          description: Drivetrain type (FWD, AWD, RWD, 4WD)
+        fuel_type:
+          type: string
+          description: Fuel type
+        engine:
+          type: string
+          description: Engine description
+        engine_size:
+          type: string
+          description: Engine displacement
+        cylinders:
+          type: integer
+          description: Number of cylinders
+        doors:
+          type: integer
+          description: Number of doors
+        made_in:
+          type: string
+          description: Country of manufacture
+        highway_fuel_economy:
+          type: integer
+          description: Highway fuel economy in MPG
+        city_fuel_economy:
+          type: integer
+          description: City fuel economy in MPG
+    ListingExtraAttributes:
+      type: object
+      description: Extra long-text attributes for a listing
+      properties:
+        id:
+          type: string
+        seller_comments:
+          type: string
+          description: Seller comments from the listing
+        options:
+          type: array
+          items:
+            type: string
+          description: List of vehicle options
+        features:
+          type: array
+          items:
+            type: string
+          description: List of vehicle features
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: integer
+          description: Error code
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars

@@ -1,0 +1,490 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer Market API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: Market
+  description: Market analytics, trends, and pricing insights
+paths:
+  /averages:
+    get:
+      tags:
+      - Market
+      summary: Get Averages for YMM
+      operationId: getAverages
+      description: '[Merged with the /search API - Please check the ''stats'' parameter to the Search API] Get market averages for price / miles / msrp / dom (days on market) fields for active cars matching the given reference VIN''s basic specification or Year, Make, Model, Trim (Optional) criteria.'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which averages data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: Year of the car
+        schema:
+          type: string
+      - name: make
+        in: query
+        description: Make of the car
+        schema:
+          type: string
+      - name: model
+        in: query
+        description: Model of the Car
+        schema:
+          type: string
+      - name: trim
+        in: query
+        description: Trim of the Car
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: 'Comma separated list of fields to generate stats for. Allowed fields: price, miles, msrp, dom (days on market)'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with market averages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Averages'
+  /comparison:
+    get:
+      tags:
+      - Market
+      summary: Compare market
+      operationId: getComparison
+      description: '[MOCK] Get historical market trends for cars matching the given VIN''s basic specification or Year, Make, Model, Trim (Optional) criteria'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which comparison data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with market comparison data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComparisonPoint'
+  /competition:
+    get:
+      tags:
+      - Market
+      summary: Competitors
+      operationId: getCompetition
+      description: '[MOCK] Competitor cars in market for current vin'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which competitors data is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with competitor data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitorsPoint'
+  /depreciation:
+    get:
+      tags:
+      - Market
+      summary: Depreciation
+      operationId: getDepreciation
+      description: '[MOCK] Model resale value based on depreciation'
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which Depreciation stats is to be returned
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with depreciation data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepreciationPoint'
+  /mds:
+    get:
+      tags:
+      - Market
+      summary: Market Days Supply
+      operationId: getMDS
+      description: Get Market Days Supply (MDS) for a car identified by a valid VIN
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN to decode
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: exact
+        in: query
+        description: Exact parameter
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        description: Latitude component of location
+        schema:
+          type: number
+          format: float
+      - name: longitude
+        in: query
+        description: Longitude component of location
+        schema:
+          type: number
+          format: float
+      - name: radius
+        in: query
+        description: Radius around the search location
+        schema:
+          type: integer
+      - name: debug
+        in: query
+        description: Debug parameter
+        schema:
+          type: string
+      - name: include_sold
+        in: query
+        description: To fetch sold vins
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with market days supply data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mds'
+  /popularity:
+    get:
+      tags:
+      - Market
+      summary: Popularity
+      operationId: getPopularity
+      description: '[MOCK] Get the Popularity for the given simple filter criteria (by given Year, Make, Model, Trim criteria)'
+      parameters:
+      - name: year
+        in: query
+        required: true
+        description: Year of the car
+        schema:
+          type: string
+      - name: make
+        in: query
+        required: true
+        description: Make of the car
+        schema:
+          type: string
+      - name: model
+        in: query
+        required: true
+        description: Model of the Car
+        schema:
+          type: string
+      - name: trim
+        in: query
+        required: true
+        description: Trim of the Car
+        schema:
+          type: string
+      - name: body_type
+        in: query
+        required: true
+        description: Body type to filter the cars on
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: stats
+        in: query
+        description: The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with popularity data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PopularityItem'
+  /trends:
+    get:
+      tags:
+      - Market
+      summary: Get Trends for criteria
+      operationId: getTrends
+      description: Get historical market trends for cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria
+      parameters:
+      - name: vin
+        in: query
+        required: true
+        description: VIN as a reference to the type of car for which trend data is to be returned
+        schema:
+          type: string
+      - name: car_type
+        in: query
+        required: true
+        description: 'Car type. Allowed values are: new / used / certified'
+        schema:
+          type: string
+          enum:
+          - new
+          - used
+          - certified
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: Year of the car
+        schema:
+          type: string
+      - name: make
+        in: query
+        description: Make of the car
+        schema:
+          type: string
+      - name: model
+        in: query
+        description: Model of the Car
+        schema:
+          type: string
+      - name: trim
+        in: query
+        description: Trim of the Car
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with trend data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrendPoint'
+components:
+  schemas:
+    CompetitorsPoint:
+      type: object
+      description: Competitor vehicle data
+      properties:
+        vin:
+          type: string
+        same_cars:
+          $ref: '#/components/schemas/CompetitorsSameCars'
+        similar_cars:
+          $ref: '#/components/schemas/CompetitorsSimilarCars'
+    Averages:
+      type: object
+      description: Market averages for a vehicle type
+      properties:
+        price:
+          type: number
+          description: Average price
+        miles:
+          type: number
+          description: Average mileage
+        msrp:
+          type: number
+          description: Average MSRP
+        dom:
+          type: number
+          description: Average days on market
+    PopularityItem:
+      type: object
+      description: Popularity data item
+      properties:
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        popularity_index:
+          type: number
+          description: Popularity index score
+        num_listings:
+          type: integer
+    ComparisonPoint:
+      type: object
+      description: Market comparison data point
+      properties:
+        vin:
+          type: string
+        price:
+          type: number
+        miles:
+          type: number
+        dom:
+          type: number
+        data_points:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    CompetitorsCarDetails:
+      type: object
+      description: Competitor car details
+      properties:
+        id:
+          type: string
+        vin:
+          type: string
+        price:
+          type: number
+        miles:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        year:
+          type: integer
+    Mds:
+      type: object
+      description: Market Days Supply data
+      properties:
+        vin:
+          type: string
+        mds:
+          type: number
+          description: Market Days Supply value
+        supply:
+          type: integer
+          description: Number of supply units
+        sales_per_day:
+          type: number
+          description: Average sales per day
+    CompetitorsSimilarCars:
+      type: object
+      description: Similar vehicle competitors
+      properties:
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_listings:
+          type: integer
+        cars:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompetitorsCarDetails'
+    TrendPoint:
+      type: object
+      description: Historical trend data point
+      properties:
+        date:
+          type: string
+          description: Date of the trend data point (YYYY-MM-DD)
+        avg_price:
+          type: number
+          description: Average price on that date
+        avg_miles:
+          type: number
+          description: Average miles on that date
+        avg_dom:
+          type: number
+          description: Average days on market on that date
+        num_listings:
+          type: integer
+          description: Number of listings on that date
+    DepreciationStats:
+      type: object
+      description: Annual depreciation statistics
+      properties:
+        year:
+          type: integer
+          description: Calendar year
+        avg_price:
+          type: number
+          description: Average price for that year
+        depreciation_pct:
+          type: number
+          description: Depreciation percentage from original
+    DepreciationPoint:
+      type: object
+      description: Depreciation data for a vehicle
+      properties:
+        vin:
+          type: string
+        current_value:
+          type: number
+        depreciation_stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepreciationStats'
+    CompetitorsSameCars:
+      type: object
+      description: Same vehicle competitors
+      properties:
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_listings:
+          type: integer
+        cars:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompetitorsCarDetails'
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars

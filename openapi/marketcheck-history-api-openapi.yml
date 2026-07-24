@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: MarketCheck Cars Dealer History API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  version: 1.0.3
+  contact:
+    name: MarketCheck
+    url: https://www.marketcheck.com/
+  termsOfService: https://www.marketcheck.com/terms/
+servers:
+- url: https://mc-api.marketcheck.com/v1
+  description: MarketCheck Production API
+tags:
+- name: History
+  description: Vehicle listing history
+paths:
+  /history/{vin}:
+    get:
+      tags:
+      - History
+      summary: Get a car's online listing history
+      operationId: history
+      description: The history API returns online listing history for a car identified by its VIN. History listings are sorted in the descending order of the listing date / last seen date.
+      parameters:
+      - name: vin
+        in: path
+        required: true
+        description: The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN.
+        schema:
+          type: string
+          minLength: 17
+          maxLength: 17
+      - name: api_key
+        in: query
+        description: The API Authentication Key. Mandatory with all API calls.
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: List of fields to fetch, in case the default fields list in the response is to be trimmed down.
+        schema:
+          type: string
+      - name: rows
+        in: query
+        description: Number of results to return. Default is 10. Max is 50.
+        schema:
+          type: integer
+          default: 10
+          maximum: 50
+      - name: page
+        in: query
+        description: Page number to fetch the results for the given criteria. Default is 1.
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response with vehicle listing history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalListing'
+components:
+  schemas:
+    HistoricalListing:
+      type: object
+      description: Historical listing record for a vehicle
+      properties:
+        id:
+          type: string
+        vin:
+          type: string
+        price:
+          type: number
+          description: Listed price at time of listing
+        miles:
+          type: integer
+          description: Odometer reading at time of listing
+        scraped_at:
+          type: integer
+          description: Unix timestamp when listing was scraped
+        last_seen_at:
+          type: integer
+          description: Unix timestamp when listing was last seen
+        first_seen_at:
+          type: integer
+          description: Unix timestamp when listing was first seen
+        dealer_id:
+          type: string
+        source:
+          type: string
+        seller_type:
+          type: string
+          enum:
+          - dealer
+          - private
+          - auction
+externalDocs:
+  description: MarketCheck API Documentation
+  url: https://docs.marketcheck.com/docs/api/cars
