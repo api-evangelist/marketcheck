@@ -1,0 +1,28 @@
+{
+  "provider": "marketcheck",
+  "sources": [
+    "marketcheck-dealer-api-openapi.yml",
+    "marketcheck-facets-api-openapi.yml",
+    "marketcheck-graphs-api-openapi.yml",
+    "marketcheck-history-api-openapi.yml",
+    "marketcheck-inventory-api-openapi.yml",
+    "marketcheck-listings-api-openapi.yml",
+    "marketcheck-market-api-openapi.yml",
+    "marketcheck-vin-decoder-api-openapi.yml"
+  ],
+  "outputs": [
+    "marketcheck-dealer-api-openapi.yml",
+    "marketcheck-facets-api-openapi.yml",
+    "marketcheck-graphs-api-openapi.yml",
+    "marketcheck-history-api-openapi.yml",
+    "marketcheck-inventory-api-openapi.yml",
+    "marketcheck-listings-api-openapi.yml",
+    "marketcheck-market-api-openapi.yml",
+    "marketcheck-vin-decoder-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
