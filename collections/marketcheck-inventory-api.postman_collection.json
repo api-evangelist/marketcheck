@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "296ae6fe-9637-4551-afef-e48c0323f61b",
+      "name": "Inventory",
+      "description": {
+        "content": "Dealer inventory operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df436dfd-f781-4363-946b-ec33869710e2",
+          "name": "Dealer inventory",
+          "request": {
+            "name": "Dealer inventory",
+            "description": {
+              "content": "Get a dealer's currently active inventory",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dealer",
+                ":dealer_id",
+                "active",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of results to return. Default is 10. Max is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "1",
+                  "description": "Page number to fetch the results for the given criteria. Default is 1."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dealer_id",
+                  "description": "(Required) Id representing the dealer to fetch the active inventory for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef52a455-2ff9-4258-a635-bd8d675b31fa",
+              "name": "Successful response with dealer active inventory",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealer",
+                    ":dealer_id",
+                    "active",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dealer_id",
+                      "description": "(Required) Id representing the dealer to fetch the active inventory for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"vin\": \"string\",\n  \"heading\": \"string\",\n  \"price\": 1102.8639872086942,\n  \"miles\": 2495,\n  \"msrp\": 530.9348289374083,\n  \"data_source\": \"string\",\n  \"source_url\": \"string\",\n  \"seller_type\": \"private\",\n  \"car_type\": \"new\",\n  \"scraped_at\": 2175,\n  \"last_seen_at\": 9904,\n  \"first_seen_at\": 2251,\n  \"dom\": 8165,\n  \"dom_180\": 3068,\n  \"dom_active\": 9011,\n  \"dealer_id\": \"string\",\n  \"ref_price\": 1862.4675572619453,\n  \"ref_miles\": 4794.890173845089,\n  \"ref_year\": 3800,\n  \"build\": {\n    \"year\": 1511,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"body_type\": \"string\",\n    \"vehicle_type\": \"string\",\n    \"transmission\": \"string\",\n    \"drivetrain\": \"string\",\n    \"fuel_type\": \"string\",\n    \"engine\": \"string\",\n    \"engine_size\": \"string\",\n    \"cylinders\": 3120,\n    \"doors\": 3480,\n    \"made_in\": \"string\",\n    \"highway_fuel_economy\": 2775,\n    \"city_fuel_economy\": 80\n  },\n  \"dealer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"string\",\n    \"dealer_type\": \"string\",\n    \"zip\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"latitude\": 9365.162861654582,\n    \"longitude\": 2443.4890428327626,\n    \"phone\": \"string\",\n    \"franchises\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d5e96e1-c267-414f-81ca-79351d78bc7c",
+          "name": "Dealer's historical inventory",
+          "request": {
+            "name": "Dealer's historical inventory",
+            "description": {
+              "content": "[v1 : Not Implemented Yet] - Get a dealer's historical inventory",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dealer",
+                ":dealer_id",
+                "historical",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dealer_id",
+                  "description": "(Required) Id representing the dealer to fetch the historical inventory for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1162398-70b3-4241-af0f-23dc12d927db",
+              "name": "Successful response with dealer historical inventory",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealer",
+                    ":dealer_id",
+                    "historical",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dealer_id",
+                      "description": "(Required) Id representing the dealer to fetch the historical inventory for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"vin\": \"string\",\n  \"heading\": \"string\",\n  \"price\": 2597.767131114362,\n  \"miles\": 3431,\n  \"msrp\": 3055.423701743256,\n  \"data_source\": \"string\",\n  \"source_url\": \"string\",\n  \"seller_type\": \"private\",\n  \"car_type\": \"certified\",\n  \"scraped_at\": 9841,\n  \"last_seen_at\": 6823,\n  \"first_seen_at\": 8777,\n  \"dom\": 5291,\n  \"dom_180\": 3880,\n  \"dom_active\": 7984,\n  \"dealer_id\": \"string\",\n  \"ref_price\": 8474.797845261814,\n  \"ref_miles\": 5116.328351696669,\n  \"ref_year\": 313,\n  \"build\": {\n    \"year\": 4199,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"body_type\": \"string\",\n    \"vehicle_type\": \"string\",\n    \"transmission\": \"string\",\n    \"drivetrain\": \"string\",\n    \"fuel_type\": \"string\",\n    \"engine\": \"string\",\n    \"engine_size\": \"string\",\n    \"cylinders\": 4321,\n    \"doors\": 5768,\n    \"made_in\": \"string\",\n    \"highway_fuel_economy\": 4167,\n    \"city_fuel_economy\": 6940\n  },\n  \"dealer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"string\",\n    \"dealer_type\": \"string\",\n    \"zip\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"latitude\": 729.7890788179162,\n    \"longitude\": 8408.820012508997,\n    \"phone\": \"string\",\n    \"franchises\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5c1f66c3-c31b-4e1d-8367-ff82c670cbf5",
+    "name": "MarketCheck Cars Dealer Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

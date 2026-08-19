@@ -1,0 +1,184 @@
+{
+  "item": [
+    {
+      "id": "1003c9be-1582-4b86-87f5-191f029b2598",
+      "name": "Graphs",
+      "description": {
+        "content": "Plot data for visualizations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df069c72-b01a-40cc-8874-460a7940db36",
+          "name": "Price, Miles plots data for given criteria",
+          "request": {
+            "name": "Price, Miles plots data for given criteria",
+            "description": {
+              "content": "[DEPRECATED - Please check this in /search API using plot=true] Get price, miles plot data for active cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "plots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "car_type",
+                  "value": "<string>",
+                  "description": "(Required) Car type to get the scatter plot data for"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "VIN as a reference to the type of car for which plot data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "Year of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "make",
+                  "value": "<string>",
+                  "description": "Make of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Model of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "trim",
+                  "value": "<string>",
+                  "description": "Trim of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "1000",
+                  "description": "Number of results to return. Default is 1000. Max is 10000."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac7b3d3b-6019-4dd0-8e98-f0efc9a66aba",
+              "name": "Successful response with plot data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "car_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"price\": 6903.387674435058,\n    \"miles\": 4564,\n    \"dom\": 207,\n    \"latitude\": 5854.318465160137,\n    \"longitude\": 6493.451796670435\n  },\n  {\n    \"id\": \"string\",\n    \"price\": 6892.375803230783,\n    \"miles\": 3142,\n    \"dom\": 9183,\n    \"latitude\": 2948.5999846008926,\n    \"longitude\": 999.0984475971832\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d03d2dea-fd42-4bf2-80f5-2087017fc5f4",
+    "name": "MarketCheck Cars Dealer Graphs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

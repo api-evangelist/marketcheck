@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer History API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a car's online listing history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/history/:vin",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "path",
+                "description": "The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "List of fields to fetch, in case the default fields list in the response is to be trimmed down."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 10. Max is 50."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to fetch the results for the given criteria. Default is 1."
+              }
+            ]
+          },
+          "docs": "The history API returns online listing history for a car identified by its VIN. History listings are sorted in the descending order of the listing date / last seen date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

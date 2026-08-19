@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer Graphs API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Graphs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Price, Miles plots data for given criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/plots",
+            "params": [
+              {
+                "name": "car_type",
+                "value": "",
+                "type": "query",
+                "description": "Car type to get the scatter plot data for"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which plot data is to be returned"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year of the car"
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Make of the car"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the Car"
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Trim of the Car"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 1000. Max is 10000."
+              }
+            ]
+          },
+          "docs": "[DEPRECATED - Please check this in /search API using plot=true] Get price, miles plot data for active cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

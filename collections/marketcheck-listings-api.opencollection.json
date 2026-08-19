@@ -1,0 +1,474 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer Listings API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets active car listings for the given search criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/search",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of location"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Radius around the search location"
+              },
+              {
+                "name": "car_type",
+                "value": "",
+                "type": "query",
+                "description": "Car type. Allowed values are: new / used / certified"
+              },
+              {
+                "name": "seller_type",
+                "value": "",
+                "type": "query",
+                "description": "Seller type to filter cars on. You can pass in multiple seller type values comma separated."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Car year - 1980 onwards. You can pass in multiple year values comma separated."
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Car Make - should be a standard OEM Make name. You can pass in multiple make values separated by comma. e.g. ford,audi"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Car model to search. You can pass in multiple model values comma separated for e.g f-150,Mustang."
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Car trim to search. You can pass in multiple trim values comma separated."
+              },
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "query",
+                "description": "Dealer id to filter the cars."
+              },
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "Car vin to search"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Source to search cars. You can pass in multiple source values comma separated."
+              },
+              {
+                "name": "body_type",
+                "value": "",
+                "type": "query",
+                "description": "Body type to filter the cars on. You can pass in multiple body types comma separated."
+              },
+              {
+                "name": "body_subtype",
+                "value": "",
+                "type": "query",
+                "description": "Body subtype to filter the cars on. You can pass in multiple body subtype values comma separated."
+              },
+              {
+                "name": "vehicle_type",
+                "value": "",
+                "type": "query",
+                "description": "Vehicle type to filter the cars on. You can pass in multiple vehicle type values comma separated."
+              },
+              {
+                "name": "vins",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of 17 digit vins to search the matching cars for. Only 10 VINs allowed per request."
+              },
+              {
+                "name": "taxonomy_vins",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of 10 letter taxonomy VINs (first 8 + 10th + 11th chars of 17-digit VIN)."
+              },
+              {
+                "name": "ymmt",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of Year|Make|Model|Trim combinations. e.g. 2010|Audi|A5,2014|Nissan|Sentra|S 6MT"
+              },
+              {
+                "name": "match",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields for exact matching (year,make,model,trim)."
+              },
+              {
+                "name": "cylinders",
+                "value": "",
+                "type": "query",
+                "description": "Cylinders to filter the cars on. You can pass in multiple cylinder values comma separated."
+              },
+              {
+                "name": "transmission",
+                "value": "",
+                "type": "query",
+                "description": "Transmission to filter the cars on. [a = Automatic, m = Manual]."
+              },
+              {
+                "name": "speeds",
+                "value": "",
+                "type": "query",
+                "description": "Speeds to filter the cars on. You can pass in multiple speeds values comma separated."
+              },
+              {
+                "name": "doors",
+                "value": "",
+                "type": "query",
+                "description": "Doors to filter the cars on. You can pass in multiple doors values comma separated."
+              },
+              {
+                "name": "drivetrain",
+                "value": "",
+                "type": "query",
+                "description": "Drivetrain to filter the cars on. You can pass in multiple drivetrain values comma separated."
+              },
+              {
+                "name": "exterior_color",
+                "value": "",
+                "type": "query",
+                "description": "Exterior color to match. You can pass in multiple exterior color values comma separated."
+              },
+              {
+                "name": "interior_color",
+                "value": "",
+                "type": "query",
+                "description": "Interior color to match. You can pass in multiple interior color values comma separated."
+              },
+              {
+                "name": "engine",
+                "value": "",
+                "type": "query",
+                "description": "Filter listings on engine"
+              },
+              {
+                "name": "engine_type",
+                "value": "",
+                "type": "query",
+                "description": "Engine Type to match. You can pass in multiple engine type values comma separated."
+              },
+              {
+                "name": "engine_aspiration",
+                "value": "",
+                "type": "query",
+                "description": "Engine Aspiration to match. You can pass in multiple Engine aspiration values comma separated."
+              },
+              {
+                "name": "engine_block",
+                "value": "",
+                "type": "query",
+                "description": "Engine Block to match. You can pass in multiple Engine Block values comma separated."
+              },
+              {
+                "name": "miles_range",
+                "value": "",
+                "type": "query",
+                "description": "Miles range to filter cars with miles in the given range. Range to be given in the format: min-max e.g. 1000-5000"
+              },
+              {
+                "name": "price_range",
+                "value": "",
+                "type": "query",
+                "description": "Price range to filter cars with the price in the range given. Range to be given in the format: min-max e.g. 1000-5000"
+              },
+              {
+                "name": "dom_range",
+                "value": "",
+                "type": "query",
+                "description": "Days on Market range to filter cars with the DOM within the given range. Range to be given in the format: min-max e.g. 10-50"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field - allowed fields are distance|price|miles|dom|age|posted_at|year. Default sort field is distance from the given point."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order - asc or desc. Default sort order is distance from a point."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 10. Max is 50."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Page number to fetch the results for the given criteria. Default is 1. Pagination is allowed only till first 1000 results."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "The comma separated list of fields for which facets are requested. Supported fields are - year, make, model, trim, vehicle_type, car_type, body_type, body_subtype, drivetrain, cylinders, transmission, exterior_color, interior_color, doors, engine_type, engine_aspiration, engine_block."
+              },
+              {
+                "name": "stats",
+                "value": "",
+                "type": "query",
+                "description": "The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter on Country, by default US. Search available on US (United States) and CA (Canada)."
+              },
+              {
+                "name": "plot",
+                "value": "",
+                "type": "query",
+                "description": "If plot has value true results in around 25k coordinates with limited fields to plot respective graph."
+              },
+              {
+                "name": "nodedup",
+                "value": "",
+                "type": "query",
+                "description": "If nodedup is set to true then will give results using is_searchable."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter listings on State."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "Filter listings on city."
+              },
+              {
+                "name": "dealer_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter listings on dealer_name."
+              },
+              {
+                "name": "trim_o",
+                "value": "",
+                "type": "query",
+                "description": "Filter listings on web scraped trim."
+              },
+              {
+                "name": "trim_r",
+                "value": "",
+                "type": "query",
+                "description": "Filter trim on custom possible matches."
+              },
+              {
+                "name": "dom_active_range",
+                "value": "",
+                "type": "query",
+                "description": "Active Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50"
+              },
+              {
+                "name": "dom_180_range",
+                "value": "",
+                "type": "query",
+                "description": "Last 180 Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50"
+              },
+              {
+                "name": "options",
+                "value": "",
+                "type": "query",
+                "description": "Tokenizer search on options. For multiple options use | as separator."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "Tokenizer search on features. For multiple options use | as separator."
+              }
+            ]
+          },
+          "docs": "This endpoint is the meat of the API and serves many purposes. This API produces a list of currently active cars from the market for the given search criteria. The API results are limited to allow pagination upto 1000 rows. The search API facilitates the following use cases - 1. Search Cars around a given geo-point within a given radius 2. Search cars for a specific year / make / model or combination of these 3. Search cars matching multiple year, make, model combinations in the same search requ"
+        },
+        {
+          "info": {
+            "name": "Listing by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/listing/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing id to get all the listing attributes"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Get a particular listing by its id"
+        },
+        {
+          "info": {
+            "name": "Long text Listings attributes for Listing with the given id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/listing/:id/extra",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing id to get all the long text listing attributes"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Get listing options, features, seller comments"
+        },
+        {
+          "info": {
+            "name": "Listing media by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/listing/:id/media",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing id to get all the listing attributes"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Get listing media (photo, photos) by id"
+        },
+        {
+          "info": {
+            "name": "Get listing HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/listing/:id/vdp",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing id to get the vehicle details page (VDP) HTML"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "html",
+                "value": "",
+                "type": "query",
+                "description": "Get only HTML for given listings VDP page"
+              }
+            ]
+          },
+          "docs": "Cached HTML of the Vehicle Details Page (VDP) for the listing. The HTML is cached only for 7 days for all listings."
+        },
+        {
+          "info": {
+            "name": "Get Summary Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/vin_report_summary",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which Summary data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Generate Summary report for a given VIN"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

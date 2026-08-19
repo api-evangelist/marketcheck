@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer Inventory API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dealer inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/active/inventory",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the active inventory for"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 10. Max is 50."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Page number to fetch the results for the given criteria. Default is 1."
+              }
+            ]
+          },
+          "docs": "Get a dealer's currently active inventory"
+        },
+        {
+          "info": {
+            "name": "Dealer's historical inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/historical/inventory",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the historical inventory for"
+              }
+            ]
+          },
+          "docs": "[v1 : Not Implemented Yet] - Get a dealer's historical inventory"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

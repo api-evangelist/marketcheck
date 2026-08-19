@@ -1,0 +1,162 @@
+{
+  "item": [
+    {
+      "id": "1fdcae36-a300-4e8f-8852-e9f344c03b2e",
+      "name": "History",
+      "description": {
+        "content": "Vehicle listing history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6db54fa9-9b65-415f-b455-7d1a8efca0f8",
+          "name": "Get a car's online listing history",
+          "request": {
+            "name": "Get a car's online listing history",
+            "description": {
+              "content": "The history API returns online listing history for a car identified by its VIN. History listings are sorted in the descending order of the listing date / last seen date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                ":vin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "List of fields to fetch, in case the default fields list in the response is to be trimmed down."
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of results to return. Default is 10. Max is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number to fetch the results for the given criteria. Default is 1."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vin",
+                  "description": "(Required) The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21cc6f85-ce92-4fe0-ac18-a463b279858d",
+              "name": "Successful response with vehicle listing history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    ":vin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vin",
+                      "description": "(Required) The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"vin\": \"string\",\n    \"price\": 872.9397150104246,\n    \"miles\": 3714,\n    \"scraped_at\": 9891,\n    \"last_seen_at\": 694,\n    \"first_seen_at\": 6983,\n    \"dealer_id\": \"string\",\n    \"source\": \"string\",\n    \"seller_type\": \"dealer\"\n  },\n  {\n    \"id\": \"string\",\n    \"vin\": \"string\",\n    \"price\": 8409.191996211519,\n    \"miles\": 6784,\n    \"scraped_at\": 6538,\n    \"last_seen_at\": 6955,\n    \"first_seen_at\": 9527,\n    \"dealer_id\": \"string\",\n    \"source\": \"string\",\n    \"seller_type\": \"dealer\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a8c5a0e-9ef0-4f5b-857e-5854b6a25d21",
+    "name": "MarketCheck Cars Dealer History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

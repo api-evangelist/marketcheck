@@ -1,0 +1,1823 @@
+{
+  "item": [
+    {
+      "id": "4dec9da4-8c27-4c15-86cc-b93c7db9e5a2",
+      "name": "Listings",
+      "description": {
+        "content": "Search and retrieve active car listings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c167af28-205d-48d0-a7e5-91c15af61027",
+          "name": "Gets active car listings for the given search criteria",
+          "request": {
+            "name": "Gets active car listings for the given search criteria",
+            "description": {
+              "content": "This endpoint is the meat of the API and serves many purposes. This API produces a list of currently active cars from the market for the given search criteria. The API results are limited to allow pagination upto 1000 rows. The search API facilitates the following use cases - 1. Search Cars around a given geo-point within a given radius 2. Search cars for a specific year / make / model or combination of these 3. Search cars matching multiple year, make, model combinations in the same search request 4. Filter results by most car specification attributes 5. Search for similar cars by VIN or Taxonomy VIN 6. Filter cars within a given price / miles / days on market (dom) range 7. Specify a sort order for the results on price / miles / dom / listed date 8. Search cars for a given City / State combination 9. Get Facets to build the search drill downs 10. Get Market averages for price/miles/dom/msrp for your search",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<float>",
+                  "description": "Latitude component of location"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<float>",
+                  "description": "Longitude component of location"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<integer>",
+                  "description": "Radius around the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "car_type",
+                  "value": "<string>",
+                  "description": "Car type. Allowed values are: new / used / certified"
+                },
+                {
+                  "disabled": false,
+                  "key": "seller_type",
+                  "value": "<string>",
+                  "description": "Seller type to filter cars on. You can pass in multiple seller type values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "Car year - 1980 onwards. You can pass in multiple year values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "make",
+                  "value": "<string>",
+                  "description": "Car Make - should be a standard OEM Make name. You can pass in multiple make values separated by comma. e.g. ford,audi"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Car model to search. You can pass in multiple model values comma separated for e.g f-150,Mustang."
+                },
+                {
+                  "disabled": false,
+                  "key": "trim",
+                  "value": "<string>",
+                  "description": "Car trim to search. You can pass in multiple trim values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "dealer_id",
+                  "value": "<string>",
+                  "description": "Dealer id to filter the cars."
+                },
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "Car vin to search"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "Source to search cars. You can pass in multiple source values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "body_type",
+                  "value": "<string>",
+                  "description": "Body type to filter the cars on. You can pass in multiple body types comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "body_subtype",
+                  "value": "<string>",
+                  "description": "Body subtype to filter the cars on. You can pass in multiple body subtype values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicle_type",
+                  "value": "<string>",
+                  "description": "Vehicle type to filter the cars on. You can pass in multiple vehicle type values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "vins",
+                  "value": "<string>",
+                  "description": "Comma separated list of 17 digit vins to search the matching cars for. Only 10 VINs allowed per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "taxonomy_vins",
+                  "value": "<string>",
+                  "description": "Comma separated list of 10 letter taxonomy VINs (first 8 + 10th + 11th chars of 17-digit VIN)."
+                },
+                {
+                  "disabled": false,
+                  "key": "ymmt",
+                  "value": "<string>",
+                  "description": "Comma separated list of Year|Make|Model|Trim combinations. e.g. 2010|Audi|A5,2014|Nissan|Sentra|S 6MT"
+                },
+                {
+                  "disabled": false,
+                  "key": "match",
+                  "value": "<string>",
+                  "description": "Comma separated list of fields for exact matching (year,make,model,trim)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cylinders",
+                  "value": "<string>",
+                  "description": "Cylinders to filter the cars on. You can pass in multiple cylinder values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "transmission",
+                  "value": "<string>",
+                  "description": "Transmission to filter the cars on. [a = Automatic, m = Manual]."
+                },
+                {
+                  "disabled": false,
+                  "key": "speeds",
+                  "value": "<string>",
+                  "description": "Speeds to filter the cars on. You can pass in multiple speeds values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "doors",
+                  "value": "<string>",
+                  "description": "Doors to filter the cars on. You can pass in multiple doors values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "drivetrain",
+                  "value": "<string>",
+                  "description": "Drivetrain to filter the cars on. You can pass in multiple drivetrain values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "exterior_color",
+                  "value": "<string>",
+                  "description": "Exterior color to match. You can pass in multiple exterior color values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "interior_color",
+                  "value": "<string>",
+                  "description": "Interior color to match. You can pass in multiple interior color values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "engine",
+                  "value": "<string>",
+                  "description": "Filter listings on engine"
+                },
+                {
+                  "disabled": false,
+                  "key": "engine_type",
+                  "value": "<string>",
+                  "description": "Engine Type to match. You can pass in multiple engine type values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "engine_aspiration",
+                  "value": "<string>",
+                  "description": "Engine Aspiration to match. You can pass in multiple Engine aspiration values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "engine_block",
+                  "value": "<string>",
+                  "description": "Engine Block to match. You can pass in multiple Engine Block values comma separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "miles_range",
+                  "value": "<string>",
+                  "description": "Miles range to filter cars with miles in the given range. Range to be given in the format: min-max e.g. 1000-5000"
+                },
+                {
+                  "disabled": false,
+                  "key": "price_range",
+                  "value": "<string>",
+                  "description": "Price range to filter cars with the price in the range given. Range to be given in the format: min-max e.g. 1000-5000"
+                },
+                {
+                  "disabled": false,
+                  "key": "dom_range",
+                  "value": "<string>",
+                  "description": "Days on Market range to filter cars with the DOM within the given range. Range to be given in the format: min-max e.g. 10-50"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Sort by field - allowed fields are distance|price|miles|dom|age|posted_at|year. Default sort field is distance from the given point."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Sort order - asc or desc. Default sort order is distance from a point."
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of results to return. Default is 10. Max is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "1",
+                  "description": "Page number to fetch the results for the given criteria. Default is 1. Pagination is allowed only till first 1000 results."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "The comma separated list of fields for which facets are requested. Supported fields are - year, make, model, trim, vehicle_type, car_type, body_type, body_subtype, drivetrain, cylinders, transmission, exterior_color, interior_color, doors, engine_type, engine_aspiration, engine_block."
+                },
+                {
+                  "disabled": false,
+                  "key": "stats",
+                  "value": "<string>",
+                  "description": "The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "US",
+                  "description": "Filter on Country, by default US. Search available on US (United States) and CA (Canada)."
+                },
+                {
+                  "disabled": false,
+                  "key": "plot",
+                  "value": "<string>",
+                  "description": "If plot has value true results in around 25k coordinates with limited fields to plot respective graph."
+                },
+                {
+                  "disabled": false,
+                  "key": "nodedup",
+                  "value": "<string>",
+                  "description": "If nodedup is set to true then will give results using is_searchable."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter listings on State."
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "Filter listings on city."
+                },
+                {
+                  "disabled": false,
+                  "key": "dealer_name",
+                  "value": "<string>",
+                  "description": "Filter listings on dealer_name."
+                },
+                {
+                  "disabled": false,
+                  "key": "trim_o",
+                  "value": "<string>",
+                  "description": "Filter listings on web scraped trim."
+                },
+                {
+                  "disabled": false,
+                  "key": "trim_r",
+                  "value": "<string>",
+                  "description": "Filter trim on custom possible matches."
+                },
+                {
+                  "disabled": false,
+                  "key": "dom_active_range",
+                  "value": "<string>",
+                  "description": "Active Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50"
+                },
+                {
+                  "disabled": false,
+                  "key": "dom_180_range",
+                  "value": "<string>",
+                  "description": "Last 180 Days on Market range to filter cars. Range to be given in the format: min-max e.g. 10-50"
+                },
+                {
+                  "disabled": false,
+                  "key": "options",
+                  "value": "<string>",
+                  "description": "Tokenizer search on options. For multiple options use | as separator."
+                },
+                {
+                  "disabled": false,
+                  "key": "features",
+                  "value": "<string>",
+                  "description": "Tokenizer search on features. For multiple options use | as separator."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab4921c2-9443-4924-a86c-748c29126e6b",
+              "name": "Successful response with search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "car_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "seller_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicle_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taxonomy_vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ymmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cylinders",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transmission",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "speeds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "doors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "drivetrain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exterior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_aspiration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_block",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "miles_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nodedup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_o",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_active_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_180_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "options",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "features",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"num_found\": 335,\n  \"listings\": [\n    {\n      \"vdp_url\": \"string\",\n      \"stock_no\": \"string\",\n      \"inventory_type\": \"string\",\n      \"id\": \"string\",\n      \"vin\": \"string\",\n      \"heading\": \"string\",\n      \"price\": 8882.888259165975,\n      \"miles\": 2006,\n      \"msrp\": 273.12359688324574,\n      \"data_source\": \"string\",\n      \"source_url\": \"string\",\n      \"seller_type\": \"auction\",\n      \"car_type\": \"new\",\n      \"scraped_at\": 7757,\n      \"last_seen_at\": 3923,\n      \"first_seen_at\": 5697,\n      \"dom\": 9266,\n      \"dom_180\": 5874,\n      \"dom_active\": 1579,\n      \"dealer_id\": \"string\",\n      \"ref_price\": 7463.102394350575,\n      \"ref_miles\": 2553.8588871324187,\n      \"ref_year\": 3694,\n      \"build\": {\n        \"year\": 9562,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"body_type\": \"string\",\n        \"vehicle_type\": \"string\",\n        \"transmission\": \"string\",\n        \"drivetrain\": \"string\",\n        \"fuel_type\": \"string\",\n        \"engine\": \"string\",\n        \"engine_size\": \"string\",\n        \"cylinders\": 7848,\n        \"doors\": 5673,\n        \"made_in\": \"string\",\n        \"highway_fuel_economy\": 6281,\n        \"city_fuel_economy\": 7137\n      },\n      \"dealer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"website\": \"string\",\n        \"dealer_type\": \"string\",\n        \"zip\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"latitude\": 4098.1084809982585,\n        \"longitude\": 5217.80228055851,\n        \"phone\": \"string\",\n        \"franchises\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"vdp_url\": \"string\",\n      \"stock_no\": \"string\",\n      \"inventory_type\": \"string\",\n      \"id\": \"string\",\n      \"vin\": \"string\",\n      \"heading\": \"string\",\n      \"price\": 6030.0732656208575,\n      \"miles\": 5954,\n      \"msrp\": 8470.918771512048,\n      \"data_source\": \"string\",\n      \"source_url\": \"string\",\n      \"seller_type\": \"auction\",\n      \"car_type\": \"certified\",\n      \"scraped_at\": 7147,\n      \"last_seen_at\": 1353,\n      \"first_seen_at\": 6463,\n      \"dom\": 5515,\n      \"dom_180\": 2287,\n      \"dom_active\": 7095,\n      \"dealer_id\": \"string\",\n      \"ref_price\": 6566.584216890784,\n      \"ref_miles\": 2822.615308098475,\n      \"ref_year\": 6164,\n      \"build\": {\n        \"year\": 6901,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"body_type\": \"string\",\n        \"vehicle_type\": \"string\",\n        \"transmission\": \"string\",\n        \"drivetrain\": \"string\",\n        \"fuel_type\": \"string\",\n        \"engine\": \"string\",\n        \"engine_size\": \"string\",\n        \"cylinders\": 2349,\n        \"doors\": 8709,\n        \"made_in\": \"string\",\n        \"highway_fuel_economy\": 4650,\n        \"city_fuel_economy\": 6775\n      },\n      \"dealer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"website\": \"string\",\n        \"dealer_type\": \"string\",\n        \"zip\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"latitude\": 4408.830473149827,\n        \"longitude\": 541.1731805401321,\n        \"phone\": \"string\",\n        \"franchises\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ],\n  \"stats\": {\n    \"key_0\": false,\n    \"key_1\": \"string\",\n    \"key_2\": 864.7737821132151\n  },\n  \"facets\": {\n    \"key_0\": false,\n    \"key_1\": 4242,\n    \"key_2\": false,\n    \"key_3\": 229.74961961622077\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58bf4a75-8c93-4973-808e-8e5f416cd350",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "car_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "seller_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicle_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taxonomy_vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ymmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cylinders",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transmission",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "speeds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "doors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "drivetrain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exterior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_aspiration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_block",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "miles_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nodedup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_o",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_active_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_180_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "options",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "features",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49540dbb-8524-4e9e-bb45-433ebb1a32e4",
+              "name": "Unauthorized - Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "car_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "seller_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicle_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taxonomy_vins",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ymmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cylinders",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transmission",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "speeds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "doors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "drivetrain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exterior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interior_color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_aspiration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "engine_block",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "miles_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start",
+                      "value": "1"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nodedup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dealer_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_o",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim_r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_active_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dom_180_range",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "options",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "features",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7996404-bcf6-4dc9-8520-c2d5ed21728a",
+          "name": "Listing by id",
+          "request": {
+            "name": "Listing by id",
+            "description": {
+              "content": "Get a particular listing by its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listing",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Listing id to get all the listing attributes"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "924b3a77-57a2-4718-9f6d-5312214a61e6",
+              "name": "Successful response with listing details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vdp_url\": \"string\",\n  \"stock_no\": \"string\",\n  \"inventory_type\": \"string\",\n  \"id\": \"string\",\n  \"vin\": \"string\",\n  \"heading\": \"string\",\n  \"price\": 9510.825056034122,\n  \"miles\": 2429,\n  \"msrp\": 4295.757366947629,\n  \"data_source\": \"string\",\n  \"source_url\": \"string\",\n  \"seller_type\": \"dealer\",\n  \"car_type\": \"new\",\n  \"scraped_at\": 5272,\n  \"last_seen_at\": 6058,\n  \"first_seen_at\": 4536,\n  \"dom\": 294,\n  \"dom_180\": 5982,\n  \"dom_active\": 3531,\n  \"dealer_id\": \"string\",\n  \"ref_price\": 6334.122564823599,\n  \"ref_miles\": 682.6304671129924,\n  \"ref_year\": 4049,\n  \"build\": {\n    \"year\": 5934,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"body_type\": \"string\",\n    \"vehicle_type\": \"string\",\n    \"transmission\": \"string\",\n    \"drivetrain\": \"string\",\n    \"fuel_type\": \"string\",\n    \"engine\": \"string\",\n    \"engine_size\": \"string\",\n    \"cylinders\": 5239,\n    \"doors\": 5004,\n    \"made_in\": \"string\",\n    \"highway_fuel_economy\": 2550,\n    \"city_fuel_economy\": 4609\n  },\n  \"dealer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"string\",\n    \"dealer_type\": \"string\",\n    \"zip\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"latitude\": 3821.660863602199,\n    \"longitude\": 8403.644120253293,\n    \"phone\": \"string\",\n    \"franchises\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f00ca18-5023-4d30-b444-5c24415e8ca9",
+              "name": "Listing not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc3cc835-17bb-4c55-a7ac-a51110dde90d",
+          "name": "Long text Listings attributes for Listing with the given id",
+          "request": {
+            "name": "Long text Listings attributes for Listing with the given id",
+            "description": {
+              "content": "Get listing options, features, seller comments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listing",
+                ":id",
+                "extra"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Listing id to get all the long text listing attributes"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e1e8a06-671e-400e-83ed-9d799f1e02d4",
+              "name": "Successful response with extra listing attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "extra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the long text listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"seller_comments\": \"string\",\n  \"options\": [\n    \"string\",\n    \"string\"\n  ],\n  \"features\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09015979-7b45-4e77-9001-071eb7e98bb6",
+              "name": "Listing not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "extra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the long text listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "695dfe05-5bba-418f-99c0-4926ed8c342b",
+          "name": "Listing media by id",
+          "request": {
+            "name": "Listing media by id",
+            "description": {
+              "content": "Get listing media (photo, photos) by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listing",
+                ":id",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Listing id to get all the listing attributes"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40f87d8a-dc32-4726-9a2b-33db914adbb8",
+              "name": "Successful response with listing media",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"photo_links\": [\n    \"string\",\n    \"string\"\n  ],\n  \"photo_count\": 3743\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4429549c-fca0-48be-97a0-e936b3fe3831",
+              "name": "Listing not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get all the listing attributes"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd40509c-2839-4e7f-8af0-d3bec54341ad",
+          "name": "Get listing HTML",
+          "request": {
+            "name": "Get listing HTML",
+            "description": {
+              "content": "Cached HTML of the Vehicle Details Page (VDP) for the listing. The HTML is cached only for 7 days for all listings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listing",
+                ":id",
+                "vdp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "html",
+                  "value": "<string>",
+                  "description": "Get only HTML for given listings VDP page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Listing id to get the vehicle details page (VDP) HTML"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99414fb9-e332-43ca-be49-905112b3ca8b",
+              "name": "Successful response with VDP HTML",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "vdp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get the vehicle details page (VDP) HTML"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5bb0021-0737-4d68-830d-5d461f0637a5",
+              "name": "Listing not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listing",
+                    ":id",
+                    "vdp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Listing id to get the vehicle details page (VDP) HTML"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e6c8973-c3d2-494f-a22d-e9a15920da9d",
+          "name": "Get Summary Report",
+          "request": {
+            "name": "Get Summary Report",
+            "description": {
+              "content": "Generate Summary report for a given VIN",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vin_report_summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which Summary data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76c3eef2-ad58-4674-997a-9be3af5343fa",
+              "name": "Successful response with summary report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vin_report_summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"vin\": \"string\",\n    \"year\": 4994,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"avg_price\": 5179.506880376018,\n    \"avg_miles\": 456.4379243473826,\n    \"num_active_listings\": 2225\n  },\n  {\n    \"vin\": \"string\",\n    \"year\": 557,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"avg_price\": 1382.6461532854128,\n    \"avg_miles\": 835.0777118486963,\n    \"num_active_listings\": 6903\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a60bfe42-3d98-4ba8-833b-efe5ce526e30",
+    "name": "MarketCheck Cars Dealer Listings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

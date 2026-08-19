@@ -1,0 +1,410 @@
+{
+  "item": [
+    {
+      "id": "ea323175-d35b-4e2d-8abc-e69afb7f2ac8",
+      "name": "VIN Decoder",
+      "description": {
+        "content": "VIN decoding and vehicle specifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3af81d5-1c2f-4f88-a6fa-00941d392a57",
+          "name": "VIN Decoder",
+          "request": {
+            "name": "VIN Decoder",
+            "description": {
+              "content": "Get the basic information on specifications for a car identified by a valid VIN",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vin",
+                ":vin",
+                "specs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vin",
+                  "description": "(Required) VIN to decode"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1d6bb08-0187-43ff-af79-e66798879106",
+              "name": "Successful response with VIN decoded build information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vin",
+                    ":vin",
+                    "specs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vin",
+                      "description": "(Required) VIN to decode"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"year\": 4626,\n  \"make\": \"string\",\n  \"model\": \"string\",\n  \"trim\": \"string\",\n  \"body_type\": \"string\",\n  \"vehicle_type\": \"string\",\n  \"transmission\": \"string\",\n  \"drivetrain\": \"string\",\n  \"fuel_type\": \"string\",\n  \"engine\": \"string\",\n  \"engine_size\": \"string\",\n  \"cylinders\": 5268,\n  \"doors\": 4105,\n  \"made_in\": \"string\",\n  \"highway_fuel_economy\": 1767,\n  \"city_fuel_economy\": 5367\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "983faa3d-c969-4914-9611-2201a7011ed6",
+          "name": "Get Economy based on environmental factors",
+          "request": {
+            "name": "Get Economy based on environmental factors",
+            "description": {
+              "content": "[MOCK] Calculate Economy i.e. Environmental Friendliness",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "economy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which Environmental Economy data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dee95d8e-6c13-4b65-a5af-b5b74053d5ab",
+              "name": "Successful response with economy data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "economy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"co2_five_year_cost\": 5729.147380645169,\n  \"energy_impact_score\": 7800.425961671055,\n  \"ghg_score\": 8095.909242029722,\n  \"smog_score\": 2742.143435798069\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4c8b455-a214-41a2-8c0e-972dccfee258",
+          "name": "Get fuel efficiency",
+          "request": {
+            "name": "Get fuel efficiency",
+            "description": {
+              "content": "[MOCK] Calculate fuel efficiency from taxonomy db mileage values",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fuel_efficiency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which fuel data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "182228e2-31c9-456f-b94d-b73dfb8948bd",
+              "name": "Successful response with fuel efficiency data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fuel_efficiency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"highway\": 2110.933989727368,\n  \"city\": 1097.2902826866182,\n  \"combined\": 4285.985658510435,\n  \"annual_fuel_cost\": 369.34143385594865\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c3192b5-a9d1-4b66-8033-bc2ab3ed9414",
+          "name": "Get Safety Rating",
+          "request": {
+            "name": "Get Safety Rating",
+            "description": {
+              "content": "[MOCK] Get Safety ratings from third party sources",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "safety"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN to fetch the safety ratings"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "faa2068b-d49f-4a69-bff6-298437d034c6",
+              "name": "Successful response with safety rating",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"overall_rating\": 5253.333325251679,\n  \"frontal_crash_rating\": \"string\",\n  \"side_crash_rating\": \"string\",\n  \"rollover_rating\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "26ef40f4-3fc6-45fe-86f2-8a5991d8fcbd",
+    "name": "MarketCheck Cars Dealer VIN Decoder API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

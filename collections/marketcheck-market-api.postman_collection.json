@@ -1,0 +1,886 @@
+{
+  "item": [
+    {
+      "id": "9a4e929b-d236-4986-99c4-15beaecf8beb",
+      "name": "Market",
+      "description": {
+        "content": "Market analytics, trends, and pricing insights",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5056901f-a132-4e4b-ad9f-667e96d1c54e",
+          "name": "Get Averages for YMM",
+          "request": {
+            "name": "Get Averages for YMM",
+            "description": {
+              "content": "[Merged with the /search API - Please check the 'stats' parameter to the Search API] Get market averages for price / miles / msrp / dom (days on market) fields for active cars matching the given reference VIN's basic specification or Year, Make, Model, Trim (Optional) criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "averages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which averages data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "Year of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "make",
+                  "value": "<string>",
+                  "description": "Make of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Model of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "trim",
+                  "value": "<string>",
+                  "description": "Trim of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma separated list of fields to generate stats for. Allowed fields: price, miles, msrp, dom (days on market)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "784797d5-bbfd-4cb9-ba4b-c96725bc6feb",
+              "name": "Successful response with market averages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "averages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"price\": 627.5519467468072,\n  \"miles\": 6822.42200328286,\n  \"msrp\": 6935.538167438358,\n  \"dom\": 4173.255644422889\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01c7bcd2-ab62-455b-9cdb-fa0e6184d5f4",
+          "name": "Compare market",
+          "request": {
+            "name": "Compare market",
+            "description": {
+              "content": "[MOCK] Get historical market trends for cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "comparison"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which comparison data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e96262e6-46fc-4a79-8e43-aceacb6c3760",
+              "name": "Successful response with market comparison data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"price\": 4714.932238613629,\n  \"miles\": 1186.0102637239445,\n  \"dom\": 3048.4707429321343,\n  \"data_points\": [\n    {\n      \"key_0\": 9918,\n      \"key_1\": true,\n      \"key_2\": 2224.56084738515,\n      \"key_3\": 808\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 2655.402807049372,\n      \"key_3\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dab8927-c2e4-4d27-907e-7ad0132c4361",
+          "name": "Competitors",
+          "request": {
+            "name": "Competitors",
+            "description": {
+              "content": "[MOCK] Competitor cars in market for current vin",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "competition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which competitors data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eba0c582-81d2-4aed-9fc6-0f6116addb97",
+              "name": "Successful response with competitor data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "competition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"same_cars\": {\n    \"avg_price\": 4598.982157478524,\n    \"avg_miles\": 4222.635022314455,\n    \"num_listings\": 4501,\n    \"cars\": [\n      {\n        \"id\": \"string\",\n        \"vin\": \"string\",\n        \"price\": 37.93712715381537,\n        \"miles\": 4689,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"year\": 6280\n      },\n      {\n        \"id\": \"string\",\n        \"vin\": \"string\",\n        \"price\": 7031.382813778154,\n        \"miles\": 2130,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"year\": 6164\n      }\n    ]\n  },\n  \"similar_cars\": {\n    \"avg_price\": 9131.913637683183,\n    \"avg_miles\": 7743.682504143524,\n    \"num_listings\": 116,\n    \"cars\": [\n      {\n        \"id\": \"string\",\n        \"vin\": \"string\",\n        \"price\": 8608.161979421153,\n        \"miles\": 8231,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"year\": 466\n      },\n      {\n        \"id\": \"string\",\n        \"vin\": \"string\",\n        \"price\": 5258.226327140592,\n        \"miles\": 608,\n        \"make\": \"string\",\n        \"model\": \"string\",\n        \"trim\": \"string\",\n        \"year\": 7091\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "846217f9-cf79-42b4-b93e-4f3717e1df7c",
+          "name": "Depreciation",
+          "request": {
+            "name": "Depreciation",
+            "description": {
+              "content": "[MOCK] Model resale value based on depreciation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "depreciation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which Depreciation stats is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db7d945a-f37b-4249-b653-ae4897144a30",
+              "name": "Successful response with depreciation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "depreciation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"current_value\": 8555.192069701125,\n  \"depreciation_stats\": [\n    {\n      \"year\": 6720,\n      \"avg_price\": 2039.8192348958178,\n      \"depreciation_pct\": 7967.82971542657\n    },\n    {\n      \"year\": 3881,\n      \"avg_price\": 5445.214558493212,\n      \"depreciation_pct\": 5475.673564664233\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2de18dd-d404-445e-bbb3-830af9872a76",
+          "name": "Market Days Supply",
+          "request": {
+            "name": "Market Days Supply",
+            "description": {
+              "content": "Get Market Days Supply (MDS) for a car identified by a valid VIN",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN to decode"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "exact",
+                  "value": "<string>",
+                  "description": "Exact parameter"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<float>",
+                  "description": "Latitude component of location"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<float>",
+                  "description": "Longitude component of location"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<integer>",
+                  "description": "Radius around the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "debug",
+                  "value": "<string>",
+                  "description": "Debug parameter"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_sold",
+                  "value": "<string>",
+                  "description": "To fetch sold vins"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa1fec7b-0db1-4150-b692-68e05fdee1bc",
+              "name": "Successful response with market days supply data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exact",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_sold",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vin\": \"string\",\n  \"mds\": 8157.385557125612,\n  \"supply\": 7523,\n  \"sales_per_day\": 5856.014881409663\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "371b4dea-d188-4d9d-92c9-56552e2dfdc5",
+          "name": "Popularity",
+          "request": {
+            "name": "Popularity",
+            "description": {
+              "content": "[MOCK] Get the Popularity for the given simple filter criteria (by given Year, Make, Model, Trim criteria)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "popularity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "(Required) Year of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "make",
+                  "value": "<string>",
+                  "description": "(Required) Make of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "(Required) Model of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "trim",
+                  "value": "<string>",
+                  "description": "(Required) Trim of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "body_type",
+                  "value": "<string>",
+                  "description": "(Required) Body type to filter the cars on"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "stats",
+                  "value": "<string>",
+                  "description": "The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad669bad-c246-43aa-94e7-728064ce4930",
+              "name": "Successful response with popularity data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "popularity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "body_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"year\": 8558,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"popularity_index\": 6327.893242639555,\n    \"num_listings\": 879\n  },\n  {\n    \"year\": 3655,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"popularity_index\": 9655.894026696307,\n    \"num_listings\": 3173\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19e84026-3408-4ffd-a61d-c2d26ad81832",
+          "name": "Get Trends for criteria",
+          "request": {
+            "name": "Get Trends for criteria",
+            "description": {
+              "content": "Get historical market trends for cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "(Required) VIN as a reference to the type of car for which trend data is to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "car_type",
+                  "value": "<string>",
+                  "description": "(Required) Car type. Allowed values are: new / used / certified"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "The API Authentication Key. Mandatory with all API calls."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "Year of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "make",
+                  "value": "<string>",
+                  "description": "Make of the car"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Model of the Car"
+                },
+                {
+                  "disabled": false,
+                  "key": "trim",
+                  "value": "<string>",
+                  "description": "Trim of the Car"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5c91397-b93c-4ec8-a230-c8d57a77595a",
+              "name": "Successful response with trend data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "car_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "make",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trim",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"string\",\n    \"avg_price\": 4479.256923920686,\n    \"avg_miles\": 3637.225664841738,\n    \"avg_dom\": 3151.4715845738074,\n    \"num_listings\": 9724\n  },\n  {\n    \"date\": \"string\",\n    \"avg_price\": 2687.2832531294544,\n    \"avg_miles\": 4274.491981819901,\n    \"avg_dom\": 1689.427422912063,\n    \"num_listings\": 8816\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mc-api.marketcheck.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20c29edb-3c04-4e17-8cf5-5bcd947077da",
+    "name": "MarketCheck Cars Dealer Market API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.\n\nContact Support:\n Name: MarketCheck",
+      "type": "text/plain"
+    }
+  }
+}

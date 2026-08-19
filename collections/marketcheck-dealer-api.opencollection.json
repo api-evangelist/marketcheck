@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dealer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dealer by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Dealer id to get all the dealer info attributes"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Get a particular dealer's information by its id"
+        },
+        {
+          "info": {
+            "name": "Dealer inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/active/inventory",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the active inventory for"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 10. Max is 50."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Page number to fetch the results for the given criteria. Default is 1."
+              }
+            ]
+          },
+          "docs": "Get a dealer's currently active inventory"
+        },
+        {
+          "info": {
+            "name": "Dealer's historical inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/historical/inventory",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the historical inventory for"
+              }
+            ]
+          },
+          "docs": "[v1 : Not Implemented Yet] - Get a dealer's historical inventory"
+        },
+        {
+          "info": {
+            "name": "Experimental - Get cached version of dealer landing page by dealer id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/landing",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Dealer id to get the landing page html for"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Experimental - Get cached version of dealer landing page by dealer id"
+        },
+        {
+          "info": {
+            "name": "Dealer's Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/ratings",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the ratings for"
+              }
+            ]
+          },
+          "docs": "[MOCK] Get a dealer's Rating"
+        },
+        {
+          "info": {
+            "name": "Dealer's Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealer/:dealer_id/reviews",
+            "params": [
+              {
+                "name": "dealer_id",
+                "value": "",
+                "type": "path",
+                "description": "Id representing the dealer to fetch the reviews for"
+              }
+            ]
+          },
+          "docs": "[MOCK] Get a dealer's Review"
+        },
+        {
+          "info": {
+            "name": "Find car dealers around",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/dealers",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of location"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Radius around the search location (max 50 miles)"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Default is 10. Max is 50."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Offset for the search results. Default is 1."
+              }
+            ]
+          },
+          "docs": "The dealers API returns a list of dealers around a given point and radius. Max radius of only 50 miles is supported."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

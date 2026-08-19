@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer Facets API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Facets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/facets",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields to generate facets for. Supported fields are - year, make, model, trim, exterior_color, interior_color, drivetrain, vehicle_type, car_type, body_style, body_subtype, doors."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which facets data is to be returned"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year of the car"
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Make of the car"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the Car"
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Trim of the Car"
+              }
+            ]
+          },
+          "docs": "[Merged with the /search API - Please check the 'facets' parameter to the Search API above] Get the facets for the given simple filter criteria (by given VIN's basic specification, Or by Year, Make, Model, Trim criteria) and facet fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

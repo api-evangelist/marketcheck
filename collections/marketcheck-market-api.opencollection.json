@@ -1,0 +1,319 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer Market API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Averages for YMM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/averages",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which averages data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year of the car"
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Make of the car"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the Car"
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Trim of the Car"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields to generate stats for. Allowed fields: price, miles, msrp, dom (days on market)"
+              }
+            ]
+          },
+          "docs": "[Merged with the /search API - Please check the 'stats' parameter to the Search API] Get market averages for price / miles / msrp / dom (days on market) fields for active cars matching the given reference VIN's basic specification or Year, Make, Model, Trim (Optional) criteria."
+        },
+        {
+          "info": {
+            "name": "Compare market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/comparison",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which comparison data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Get historical market trends for cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria"
+        },
+        {
+          "info": {
+            "name": "Competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/competition",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which competitors data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Competitor cars in market for current vin"
+        },
+        {
+          "info": {
+            "name": "Depreciation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/depreciation",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which Depreciation stats is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Model resale value based on depreciation"
+        },
+        {
+          "info": {
+            "name": "Market Days Supply",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/mds",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN to decode"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "exact",
+                "value": "",
+                "type": "query",
+                "description": "Exact parameter"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude component of location"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude component of location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Radius around the search location"
+              },
+              {
+                "name": "debug",
+                "value": "",
+                "type": "query",
+                "description": "Debug parameter"
+              },
+              {
+                "name": "include_sold",
+                "value": "",
+                "type": "query",
+                "description": "To fetch sold vins"
+              }
+            ]
+          },
+          "docs": "Get Market Days Supply (MDS) for a car identified by a valid VIN"
+        },
+        {
+          "info": {
+            "name": "Popularity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/popularity",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year of the car"
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Make of the car"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the Car"
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Trim of the Car"
+              },
+              {
+                "name": "body_type",
+                "value": "",
+                "type": "query",
+                "description": "Body type to filter the cars on"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "stats",
+                "value": "",
+                "type": "query",
+                "description": "The list of fields for which stats need to be generated. Allowed fields are - price, miles, msrp, dom."
+              }
+            ]
+          },
+          "docs": "[MOCK] Get the Popularity for the given simple filter criteria (by given Year, Make, Model, Trim criteria)"
+        },
+        {
+          "info": {
+            "name": "Get Trends for criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/trends",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which trend data is to be returned"
+              },
+              {
+                "name": "car_type",
+                "value": "",
+                "type": "query",
+                "description": "Car type. Allowed values are: new / used / certified"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year of the car"
+              },
+              {
+                "name": "make",
+                "value": "",
+                "type": "query",
+                "description": "Make of the car"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the Car"
+              },
+              {
+                "name": "trim",
+                "value": "",
+                "type": "query",
+                "description": "Trim of the Car"
+              }
+            ]
+          },
+          "docs": "Get historical market trends for cars matching the given VIN's basic specification or Year, Make, Model, Trim (Optional) criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

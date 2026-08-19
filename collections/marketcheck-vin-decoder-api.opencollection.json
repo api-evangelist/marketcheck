@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarketCheck Cars Dealer VIN Decoder API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VIN Decoder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "VIN Decoder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/vin/:vin/specs",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "path",
+                "description": "VIN to decode"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "Get the basic information on specifications for a car identified by a valid VIN"
+        },
+        {
+          "info": {
+            "name": "Get Economy based on environmental factors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/economy",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which Environmental Economy data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Calculate Economy i.e. Environmental Friendliness"
+        },
+        {
+          "info": {
+            "name": "Get fuel efficiency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/fuel_efficiency",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN as a reference to the type of car for which fuel data is to be returned"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Calculate fuel efficiency from taxonomy db mileage values"
+        },
+        {
+          "info": {
+            "name": "Get Safety Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mc-api.marketcheck.com/v1/safety",
+            "params": [
+              {
+                "name": "vin",
+                "value": "",
+                "type": "query",
+                "description": "VIN to fetch the safety ratings"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The API Authentication Key. Mandatory with all API calls."
+              }
+            ]
+          },
+          "docs": "[MOCK] Get Safety ratings from third party sources"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
