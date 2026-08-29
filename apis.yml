@@ -246,6 +246,9 @@ apis:
   - type: Documentation
     url: https://docs.marketcheck.com/docs/api/cars
 common:
+  - type: CapabilityMap
+    url: capabilities/marketcheck-capability-edges.yml
+    name: MarketCheck Business Capability Map
 
   - type: AgenticAccess
     url: agentic-access/marketcheck-agentic-access.yml

@@ -1,0 +1,26 @@
+slug: marketcheck
+provider: MarketCheck
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Market
+  spec_file: marketcheck-market-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.8
+  evidence: getAverages 'Get Averages for YMM', getComparison 'Compare market', getCompetition 'Competitors',
+    getDepreciation, getMDS 'Market Days Supply', getPopularity, getTrends 'Get Trends for criteria'
+  reason: Operations deliver market averages, competitor sets, depreciation curves, market days supply,
+    popularity and trend analytics — textbook market research and competitive intelligence over the vehicle
+    market. Clearly market intelligence; only mild doubt about a pricing-analytics reading.
