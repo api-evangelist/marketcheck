@@ -155,6 +155,8 @@ apis:
   humanURL: https://www.marketcheck.com/apis/cars/
   baseURL: https://mc-api.marketcheck.com
   tags:
+  - Dealers
+  tags_raw:
   - Dealer
   properties:
   - type: OpenAPI
@@ -227,6 +229,8 @@ apis:
   humanURL: https://www.marketcheck.com/apis/cars/
   baseURL: https://mc-api.marketcheck.com
   tags:
+  - Markets
+  tags_raw:
   - Market
   properties:
   - type: OpenAPI
