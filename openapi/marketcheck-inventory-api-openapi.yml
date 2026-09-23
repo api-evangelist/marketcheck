@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: MarketCheck Cars Dealer Inventory API
-  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  title: MarketCheck Cars Inventory API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US.
   version: 1.0.3
   contact:
     name: MarketCheck
@@ -76,6 +76,58 @@ paths:
                 $ref: '#/components/schemas/BaseListing'
 components:
   schemas:
+    Build:
+      type: object
+      description: Vehicle build/specification information decoded from VIN
+      properties:
+        year:
+          type: integer
+          description: Model year
+        make:
+          type: string
+          description: Vehicle make
+        model:
+          type: string
+          description: Vehicle model
+        trim:
+          type: string
+          description: Vehicle trim level
+        body_type:
+          type: string
+          description: Body type (sedan, SUV, truck, etc.)
+        vehicle_type:
+          type: string
+          description: Vehicle type classification
+        transmission:
+          type: string
+          description: Transmission type
+        drivetrain:
+          type: string
+          description: Drivetrain type (FWD, AWD, RWD, 4WD)
+        fuel_type:
+          type: string
+          description: Fuel type
+        engine:
+          type: string
+          description: Engine description
+        engine_size:
+          type: string
+          description: Engine displacement
+        cylinders:
+          type: integer
+          description: Number of cylinders
+        doors:
+          type: integer
+          description: Number of doors
+        made_in:
+          type: string
+          description: Country of manufacture
+        highway_fuel_economy:
+          type: integer
+          description: Highway fuel economy in MPG
+        city_fuel_economy:
+          type: integer
+          description: City fuel economy in MPG
     Dealer:
       type: object
       description: Dealer information
@@ -191,58 +243,6 @@ components:
           $ref: '#/components/schemas/Build'
         dealer:
           $ref: '#/components/schemas/Dealer'
-    Build:
-      type: object
-      description: Vehicle build/specification information decoded from VIN
-      properties:
-        year:
-          type: integer
-          description: Model year
-        make:
-          type: string
-          description: Vehicle make
-        model:
-          type: string
-          description: Vehicle model
-        trim:
-          type: string
-          description: Vehicle trim level
-        body_type:
-          type: string
-          description: Body type (sedan, SUV, truck, etc.)
-        vehicle_type:
-          type: string
-          description: Vehicle type classification
-        transmission:
-          type: string
-          description: Transmission type
-        drivetrain:
-          type: string
-          description: Drivetrain type (FWD, AWD, RWD, 4WD)
-        fuel_type:
-          type: string
-          description: Fuel type
-        engine:
-          type: string
-          description: Engine description
-        engine_size:
-          type: string
-          description: Engine displacement
-        cylinders:
-          type: integer
-          description: Number of cylinders
-        doors:
-          type: integer
-          description: Number of doors
-        made_in:
-          type: string
-          description: Country of manufacture
-        highway_fuel_economy:
-          type: integer
-          description: Highway fuel economy in MPG
-        city_fuel_economy:
-          type: integer
-          description: City fuel economy in MPG
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

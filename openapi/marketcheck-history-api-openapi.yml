@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: MarketCheck Cars Dealer History API
-  description: Access the New, Used and Certified cars inventories for all Car Dealers in US. The data is sourced from online listings by over 44,000 Car dealers in US. At any time, there are about 6.2M searchable listings (about 1.9M unique VINs) for Used & Certified cars and about 6.6M (about 3.9M unique VINs) New Car listings from all over US. MarketCheck aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
+  title: MarketCheck Cars History API
+  description: Access the New, Used and Certified cars inventories for all Car Dealers in US.
   version: 1.0.3
   contact:
     name: MarketCheck

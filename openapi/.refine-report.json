@@ -1,14 +1,7 @@
 {
   "provider": "marketcheck",
   "sources": [
-    "marketcheck-dealer-api-openapi.yml",
-    "marketcheck-facets-api-openapi.yml",
-    "marketcheck-graphs-api-openapi.yml",
-    "marketcheck-history-api-openapi.yml",
-    "marketcheck-inventory-api-openapi.yml",
-    "marketcheck-listings-api-openapi.yml",
-    "marketcheck-market-api-openapi.yml",
-    "marketcheck-vin-decoder-api-openapi.yml"
+    "_original/marketcheck-cars-openapi.yml"
   ],
   "outputs": [
     "marketcheck-dealer-api-openapi.yml",
@@ -23,6 +16,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "marketcheck-cars-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "marketcheck-dealer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-facets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-graphs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-listings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-market-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marketcheck-vin-decoder-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
