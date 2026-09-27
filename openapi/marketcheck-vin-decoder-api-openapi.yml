@@ -158,24 +158,6 @@ components:
         rollover_rating:
           type: string
           description: Rollover test rating
-    FuelEfficiency:
-      type: object
-      description: Fuel efficiency data for a vehicle
-      properties:
-        vin:
-          type: string
-        highway:
-          type: number
-          description: Highway fuel efficiency in MPG
-        city:
-          type: number
-          description: City fuel efficiency in MPG
-        combined:
-          type: number
-          description: Combined fuel efficiency in MPG
-        annual_fuel_cost:
-          type: number
-          description: Estimated annual fuel cost in USD
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -228,6 +210,24 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
+    FuelEfficiency:
+      type: object
+      description: Fuel efficiency data for a vehicle
+      properties:
+        vin:
+          type: string
+        highway:
+          type: number
+          description: Highway fuel efficiency in MPG
+        city:
+          type: number
+          description: City fuel efficiency in MPG
+        combined:
+          type: number
+          description: Combined fuel efficiency in MPG
+        annual_fuel_cost:
+          type: number
+          description: Estimated annual fuel cost in USD
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

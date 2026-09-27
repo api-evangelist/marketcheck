@@ -488,83 +488,6 @@ paths:
                   $ref: '#/components/schemas/VinReport'
 components:
   schemas:
-    VinReport:
-      type: object
-      description: Summary report for a VIN
-      properties:
-        vin:
-          type: string
-        year:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        avg_price:
-          type: number
-        avg_miles:
-          type: number
-        num_active_listings:
-          type: integer
-    Listing:
-      allOf:
-      - $ref: '#/components/schemas/BaseListing'
-      type: object
-      description: Full listing object with all attributes
-      properties:
-        vdp_url:
-          type: string
-          description: URL to the Vehicle Details Page
-        stock_no:
-          type: string
-          description: Dealer stock number
-        inventory_type:
-          type: string
-          description: Inventory classification
-    ListingExtraAttributes:
-      type: object
-      description: Extra long-text attributes for a listing
-      properties:
-        id:
-          type: string
-        seller_comments:
-          type: string
-          description: Seller comments from the listing
-        options:
-          type: array
-          items:
-            type: string
-          description: List of vehicle options
-        features:
-          type: array
-          items:
-            type: string
-          description: List of vehicle features
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: integer
-          description: Error code
-    ListingMedia:
-      type: object
-      description: Media assets associated with a listing
-      properties:
-        id:
-          type: string
-        photo_links:
-          type: array
-          items:
-            type: string
-          description: List of photo URLs
-        photo_count:
-          type: integer
-          description: Total number of photos
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -617,6 +540,87 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
+    ListingVDP:
+      type: object
+      description: Vehicle Details Page HTML content
+      properties:
+        id:
+          type: string
+        html:
+          type: string
+          description: Cached HTML content of the Vehicle Details Page
+    ListingExtraAttributes:
+      type: object
+      description: Extra long-text attributes for a listing
+      properties:
+        id:
+          type: string
+        seller_comments:
+          type: string
+          description: Seller comments from the listing
+        options:
+          type: array
+          items:
+            type: string
+          description: List of vehicle options
+        features:
+          type: array
+          items:
+            type: string
+          description: List of vehicle features
+    ListingMedia:
+      type: object
+      description: Media assets associated with a listing
+      properties:
+        id:
+          type: string
+        photo_links:
+          type: array
+          items:
+            type: string
+          description: List of photo URLs
+        photo_count:
+          type: integer
+          description: Total number of photos
+    SearchResponse:
+      type: object
+      description: Response object from search API
+      properties:
+        num_found:
+          type: integer
+          description: Total number of listings found
+        listings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+        stats:
+          type: object
+          description: Statistics for the search results
+          additionalProperties: true
+        facets:
+          type: object
+          description: Facets for the search results
+          additionalProperties: true
+    VinReport:
+      type: object
+      description: Summary report for a VIN
+      properties:
+        vin:
+          type: string
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_active_listings:
+          type: integer
     Dealer:
       type: object
       description: Dealer information
@@ -732,34 +736,30 @@ components:
           $ref: '#/components/schemas/Build'
         dealer:
           $ref: '#/components/schemas/Dealer'
-    ListingVDP:
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/BaseListing'
       type: object
-      description: Vehicle Details Page HTML content
+      description: Full listing object with all attributes
       properties:
-        id:
+        vdp_url:
           type: string
-        html:
+          description: URL to the Vehicle Details Page
+        stock_no:
           type: string
-          description: Cached HTML content of the Vehicle Details Page
-    SearchResponse:
+          description: Dealer stock number
+        inventory_type:
+          type: string
+          description: Inventory classification
+    Error:
       type: object
-      description: Response object from search API
       properties:
-        num_found:
+        message:
+          type: string
+          description: Error message
+        code:
           type: integer
-          description: Total number of listings found
-        listings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Listing'
-        stats:
-          type: object
-          description: Statistics for the search results
-          additionalProperties: true
-        facets:
-          type: object
-          description: Facets for the search results
-          additionalProperties: true
+          description: Error code
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

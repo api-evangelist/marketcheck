@@ -229,6 +229,25 @@ paths:
                 $ref: '#/components/schemas/DealersResponse'
 components:
   schemas:
+    DealerReview:
+      type: object
+      description: Dealer review information
+      properties:
+        dealer_id:
+          type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewComponents'
+    DealerLandingPage:
+      type: object
+      description: Dealer landing page content
+      properties:
+        dealer_id:
+          type: string
+        html:
+          type: string
+          description: Cached HTML content of the dealer landing page
     ReviewComponents:
       type: object
       description: Individual review data
@@ -243,15 +262,6 @@ components:
           type: string
         date:
           type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: integer
-          description: Error code
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -304,18 +314,17 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
-    RatingComponents:
+    DealersResponse:
       type: object
-      description: Rating components breakdown
+      description: Response from dealers search
       properties:
-        customer_service:
-          type: number
-        facilities:
-          type: number
-        overall_experience:
-          type: number
-        recommend_dealer:
-          type: number
+        num_found:
+          type: integer
+          description: Total number of dealers found
+        dealers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dealer'
     Dealer:
       type: object
       description: Dealer information
@@ -355,6 +364,18 @@ components:
           items:
             type: string
           description: List of car franchises/makes the dealer carries
+    RatingComponents:
+      type: object
+      description: Rating components breakdown
+      properties:
+        customer_service:
+          type: number
+        facilities:
+          type: number
+        overall_experience:
+          type: number
+        recommend_dealer:
+          type: number
     BaseListing:
       type: object
       description: Base listing object containing minimal car listing information
@@ -431,26 +452,6 @@ components:
           $ref: '#/components/schemas/Build'
         dealer:
           $ref: '#/components/schemas/Dealer'
-    DealerLandingPage:
-      type: object
-      description: Dealer landing page content
-      properties:
-        dealer_id:
-          type: string
-        html:
-          type: string
-          description: Cached HTML content of the dealer landing page
-    DealersResponse:
-      type: object
-      description: Response from dealers search
-      properties:
-        num_found:
-          type: integer
-          description: Total number of dealers found
-        dealers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dealer'
     DealerRating:
       type: object
       description: Dealer rating information
@@ -462,16 +463,15 @@ components:
           description: Overall dealer rating
         components:
           $ref: '#/components/schemas/RatingComponents'
-    DealerReview:
+    Error:
       type: object
-      description: Dealer review information
       properties:
-        dealer_id:
+        message:
           type: string
-        reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReviewComponents'
+          description: Error message
+        code:
+          type: integer
+          description: Error code
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars
