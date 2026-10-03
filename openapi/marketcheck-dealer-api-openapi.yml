@@ -229,25 +229,17 @@ paths:
                 $ref: '#/components/schemas/DealersResponse'
 components:
   schemas:
-    DealerReview:
+    DealersResponse:
       type: object
-      description: Dealer review information
+      description: Response from dealers search
       properties:
-        dealer_id:
-          type: string
-        reviews:
+        num_found:
+          type: integer
+          description: Total number of dealers found
+        dealers:
           type: array
           items:
-            $ref: '#/components/schemas/ReviewComponents'
-    DealerLandingPage:
-      type: object
-      description: Dealer landing page content
-      properties:
-        dealer_id:
-          type: string
-        html:
-          type: string
-          description: Cached HTML content of the dealer landing page
+            $ref: '#/components/schemas/Dealer'
     ReviewComponents:
       type: object
       description: Individual review data
@@ -262,69 +254,6 @@ components:
           type: string
         date:
           type: string
-    Build:
-      type: object
-      description: Vehicle build/specification information decoded from VIN
-      properties:
-        year:
-          type: integer
-          description: Model year
-        make:
-          type: string
-          description: Vehicle make
-        model:
-          type: string
-          description: Vehicle model
-        trim:
-          type: string
-          description: Vehicle trim level
-        body_type:
-          type: string
-          description: Body type (sedan, SUV, truck, etc.)
-        vehicle_type:
-          type: string
-          description: Vehicle type classification
-        transmission:
-          type: string
-          description: Transmission type
-        drivetrain:
-          type: string
-          description: Drivetrain type (FWD, AWD, RWD, 4WD)
-        fuel_type:
-          type: string
-          description: Fuel type
-        engine:
-          type: string
-          description: Engine description
-        engine_size:
-          type: string
-          description: Engine displacement
-        cylinders:
-          type: integer
-          description: Number of cylinders
-        doors:
-          type: integer
-          description: Number of doors
-        made_in:
-          type: string
-          description: Country of manufacture
-        highway_fuel_economy:
-          type: integer
-          description: Highway fuel economy in MPG
-        city_fuel_economy:
-          type: integer
-          description: City fuel economy in MPG
-    DealersResponse:
-      type: object
-      description: Response from dealers search
-      properties:
-        num_found:
-          type: integer
-          description: Total number of dealers found
-        dealers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dealer'
     Dealer:
       type: object
       description: Dealer information
@@ -364,18 +293,6 @@ components:
           items:
             type: string
           description: List of car franchises/makes the dealer carries
-    RatingComponents:
-      type: object
-      description: Rating components breakdown
-      properties:
-        customer_service:
-          type: number
-        facilities:
-          type: number
-        overall_experience:
-          type: number
-        recommend_dealer:
-          type: number
     BaseListing:
       type: object
       description: Base listing object containing minimal car listing information
@@ -463,6 +380,79 @@ components:
           description: Overall dealer rating
         components:
           $ref: '#/components/schemas/RatingComponents'
+    Build:
+      type: object
+      description: Vehicle build/specification information decoded from VIN
+      properties:
+        year:
+          type: integer
+          description: Model year
+        make:
+          type: string
+          description: Vehicle make
+        model:
+          type: string
+          description: Vehicle model
+        trim:
+          type: string
+          description: Vehicle trim level
+        body_type:
+          type: string
+          description: Body type (sedan, SUV, truck, etc.)
+        vehicle_type:
+          type: string
+          description: Vehicle type classification
+        transmission:
+          type: string
+          description: Transmission type
+        drivetrain:
+          type: string
+          description: Drivetrain type (FWD, AWD, RWD, 4WD)
+        fuel_type:
+          type: string
+          description: Fuel type
+        engine:
+          type: string
+          description: Engine description
+        engine_size:
+          type: string
+          description: Engine displacement
+        cylinders:
+          type: integer
+          description: Number of cylinders
+        doors:
+          type: integer
+          description: Number of doors
+        made_in:
+          type: string
+          description: Country of manufacture
+        highway_fuel_economy:
+          type: integer
+          description: Highway fuel economy in MPG
+        city_fuel_economy:
+          type: integer
+          description: City fuel economy in MPG
+    RatingComponents:
+      type: object
+      description: Rating components breakdown
+      properties:
+        customer_service:
+          type: number
+        facilities:
+          type: number
+        overall_experience:
+          type: number
+        recommend_dealer:
+          type: number
+    DealerLandingPage:
+      type: object
+      description: Dealer landing page content
+      properties:
+        dealer_id:
+          type: string
+        html:
+          type: string
+          description: Cached HTML content of the dealer landing page
     Error:
       type: object
       properties:
@@ -472,6 +462,16 @@ components:
         code:
           type: integer
           description: Error code
+    DealerReview:
+      type: object
+      description: Dealer review information
+      properties:
+        dealer_id:
+          type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewComponents'
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars
