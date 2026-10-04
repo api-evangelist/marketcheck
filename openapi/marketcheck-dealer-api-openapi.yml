@@ -229,31 +229,35 @@ paths:
                 $ref: '#/components/schemas/DealersResponse'
 components:
   schemas:
-    DealersResponse:
+    DealerRating:
       type: object
-      description: Response from dealers search
+      description: Dealer rating information
       properties:
-        num_found:
-          type: integer
-          description: Total number of dealers found
-        dealers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dealer'
-    ReviewComponents:
-      type: object
-      description: Individual review data
-      properties:
-        rating:
+        dealer_id:
+          type: string
+        overall_rating:
           type: number
-        title:
+          description: Overall dealer rating
+        components:
+          $ref: '#/components/schemas/RatingComponents'
+    DealerLandingPage:
+      type: object
+      description: Dealer landing page content
+      properties:
+        dealer_id:
           type: string
-        body:
+        html:
           type: string
-        author:
+          description: Cached HTML content of the dealer landing page
+    Error:
+      type: object
+      properties:
+        message:
           type: string
-        date:
-          type: string
+          description: Error message
+        code:
+          type: integer
+          description: Error code
     Dealer:
       type: object
       description: Dealer information
@@ -293,6 +297,20 @@ components:
           items:
             type: string
           description: List of car franchises/makes the dealer carries
+    ReviewComponents:
+      type: object
+      description: Individual review data
+      properties:
+        rating:
+          type: number
+        title:
+          type: string
+        body:
+          type: string
+        author:
+          type: string
+        date:
+          type: string
     BaseListing:
       type: object
       description: Base listing object containing minimal car listing information
@@ -369,17 +387,17 @@ components:
           $ref: '#/components/schemas/Build'
         dealer:
           $ref: '#/components/schemas/Dealer'
-    DealerRating:
+    DealersResponse:
       type: object
-      description: Dealer rating information
+      description: Response from dealers search
       properties:
-        dealer_id:
-          type: string
-        overall_rating:
-          type: number
-          description: Overall dealer rating
-        components:
-          $ref: '#/components/schemas/RatingComponents'
+        num_found:
+          type: integer
+          description: Total number of dealers found
+        dealers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dealer'
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -444,24 +462,6 @@ components:
           type: number
         recommend_dealer:
           type: number
-    DealerLandingPage:
-      type: object
-      description: Dealer landing page content
-      properties:
-        dealer_id:
-          type: string
-        html:
-          type: string
-          description: Cached HTML content of the dealer landing page
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: integer
-          description: Error code
     DealerReview:
       type: object
       description: Dealer review information

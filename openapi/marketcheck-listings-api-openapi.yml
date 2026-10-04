@@ -488,39 +488,15 @@ paths:
                   $ref: '#/components/schemas/VinReport'
 components:
   schemas:
-    ListingMedia:
+    Error:
       type: object
-      description: Media assets associated with a listing
       properties:
-        id:
+        message:
           type: string
-        photo_links:
-          type: array
-          items:
-            type: string
-          description: List of photo URLs
-        photo_count:
+          description: Error message
+        code:
           type: integer
-          description: Total number of photos
-    SearchResponse:
-      type: object
-      description: Response object from search API
-      properties:
-        num_found:
-          type: integer
-          description: Total number of listings found
-        listings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Listing'
-        stats:
-          type: object
-          description: Statistics for the search results
-          additionalProperties: true
-        facets:
-          type: object
-          description: Facets for the search results
-          additionalProperties: true
+          description: Error code
     VinReport:
       type: object
       description: Summary report for a VIN
@@ -580,30 +556,25 @@ components:
           items:
             type: string
           description: List of car franchises/makes the dealer carries
-    Listing:
-      allOf:
-      - $ref: '#/components/schemas/BaseListing'
+    ListingExtraAttributes:
       type: object
-      description: Full listing object with all attributes
-      properties:
-        vdp_url:
-          type: string
-          description: URL to the Vehicle Details Page
-        stock_no:
-          type: string
-          description: Dealer stock number
-        inventory_type:
-          type: string
-          description: Inventory classification
-    ListingVDP:
-      type: object
-      description: Vehicle Details Page HTML content
+      description: Extra long-text attributes for a listing
       properties:
         id:
           type: string
-        html:
+        seller_comments:
           type: string
-          description: Cached HTML content of the Vehicle Details Page
+          description: Seller comments from the listing
+        options:
+          type: array
+          items:
+            type: string
+          description: List of vehicle options
+        features:
+          type: array
+          items:
+            type: string
+          description: List of vehicle features
     BaseListing:
       type: object
       description: Base listing object containing minimal car listing information
@@ -732,34 +703,63 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
-    Error:
+    ListingVDP:
       type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: integer
-          description: Error code
-    ListingExtraAttributes:
-      type: object
-      description: Extra long-text attributes for a listing
+      description: Vehicle Details Page HTML content
       properties:
         id:
           type: string
-        seller_comments:
+        html:
           type: string
-          description: Seller comments from the listing
-        options:
+          description: Cached HTML content of the Vehicle Details Page
+    SearchResponse:
+      type: object
+      description: Response object from search API
+      properties:
+        num_found:
+          type: integer
+          description: Total number of listings found
+        listings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+        stats:
+          type: object
+          description: Statistics for the search results
+          additionalProperties: true
+        facets:
+          type: object
+          description: Facets for the search results
+          additionalProperties: true
+    ListingMedia:
+      type: object
+      description: Media assets associated with a listing
+      properties:
+        id:
+          type: string
+        photo_links:
           type: array
           items:
             type: string
-          description: List of vehicle options
-        features:
-          type: array
-          items:
-            type: string
-          description: List of vehicle features
+          description: List of photo URLs
+        photo_count:
+          type: integer
+          description: Total number of photos
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/BaseListing'
+      type: object
+      description: Full listing object with all attributes
+      properties:
+        vdp_url:
+          type: string
+          description: URL to the Vehicle Details Page
+        stock_no:
+          type: string
+          description: Dealer stock number
+        inventory_type:
+          type: string
+          description: Inventory classification
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

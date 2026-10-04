@@ -318,6 +318,94 @@ paths:
                   $ref: '#/components/schemas/TrendPoint'
 components:
   schemas:
+    Averages:
+      type: object
+      description: Market averages for a vehicle type
+      properties:
+        price:
+          type: number
+          description: Average price
+        miles:
+          type: number
+          description: Average mileage
+        msrp:
+          type: number
+          description: Average MSRP
+        dom:
+          type: number
+          description: Average days on market
+    DepreciationStats:
+      type: object
+      description: Annual depreciation statistics
+      properties:
+        year:
+          type: integer
+          description: Calendar year
+        avg_price:
+          type: number
+          description: Average price for that year
+        depreciation_pct:
+          type: number
+          description: Depreciation percentage from original
+    DepreciationPoint:
+      type: object
+      description: Depreciation data for a vehicle
+      properties:
+        vin:
+          type: string
+        current_value:
+          type: number
+        depreciation_stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepreciationStats'
+    CompetitorsPoint:
+      type: object
+      description: Competitor vehicle data
+      properties:
+        vin:
+          type: string
+        same_cars:
+          $ref: '#/components/schemas/CompetitorsSameCars'
+        similar_cars:
+          $ref: '#/components/schemas/CompetitorsSimilarCars'
+    CompetitorsCarDetails:
+      type: object
+      description: Competitor car details
+      properties:
+        id:
+          type: string
+        vin:
+          type: string
+        price:
+          type: number
+        miles:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        year:
+          type: integer
+    ComparisonPoint:
+      type: object
+      description: Market comparison data point
+      properties:
+        vin:
+          type: string
+        price:
+          type: number
+        miles:
+          type: number
+        dom:
+          type: number
+        data_points:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     TrendPoint:
       type: object
       description: Historical trend data point
@@ -351,81 +439,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CompetitorsCarDetails'
-    CompetitorsCarDetails:
-      type: object
-      description: Competitor car details
-      properties:
-        id:
-          type: string
-        vin:
-          type: string
-        price:
-          type: number
-        miles:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        year:
-          type: integer
-    Averages:
-      type: object
-      description: Market averages for a vehicle type
-      properties:
-        price:
-          type: number
-          description: Average price
-        miles:
-          type: number
-          description: Average mileage
-        msrp:
-          type: number
-          description: Average MSRP
-        dom:
-          type: number
-          description: Average days on market
-    DepreciationPoint:
-      type: object
-      description: Depreciation data for a vehicle
-      properties:
-        vin:
-          type: string
-        current_value:
-          type: number
-        depreciation_stats:
-          type: array
-          items:
-            $ref: '#/components/schemas/DepreciationStats'
-    CompetitorsPoint:
-      type: object
-      description: Competitor vehicle data
-      properties:
-        vin:
-          type: string
-        same_cars:
-          $ref: '#/components/schemas/CompetitorsSameCars'
-        similar_cars:
-          $ref: '#/components/schemas/CompetitorsSimilarCars'
-    ComparisonPoint:
-      type: object
-      description: Market comparison data point
-      properties:
-        vin:
-          type: string
-        price:
-          type: number
-        miles:
-          type: number
-        dom:
-          type: number
-        data_points:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     PopularityItem:
       type: object
       description: Popularity data item
@@ -443,33 +456,6 @@ components:
           description: Popularity index score
         num_listings:
           type: integer
-    DepreciationStats:
-      type: object
-      description: Annual depreciation statistics
-      properties:
-        year:
-          type: integer
-          description: Calendar year
-        avg_price:
-          type: number
-          description: Average price for that year
-        depreciation_pct:
-          type: number
-          description: Depreciation percentage from original
-    CompetitorsSimilarCars:
-      type: object
-      description: Similar vehicle competitors
-      properties:
-        avg_price:
-          type: number
-        avg_miles:
-          type: number
-        num_listings:
-          type: integer
-        cars:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompetitorsCarDetails'
     Mds:
       type: object
       description: Market Days Supply data
@@ -485,6 +471,20 @@ components:
         sales_per_day:
           type: number
           description: Average sales per day
+    CompetitorsSimilarCars:
+      type: object
+      description: Similar vehicle competitors
+      properties:
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_listings:
+          type: integer
+        cars:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompetitorsCarDetails'
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars
