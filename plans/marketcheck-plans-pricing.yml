@@ -155,3 +155,33 @@ billing:
     note: Data costs exceeding $1,000 within a billing cycle are billed early
   unusedQuotaRollover: false
   quotaResetDate: first_of_calendar_month
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basic
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Standard
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
