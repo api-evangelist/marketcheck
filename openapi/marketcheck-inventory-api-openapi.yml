@@ -76,6 +76,82 @@ paths:
                 $ref: '#/components/schemas/BaseListing'
 components:
   schemas:
+    BaseListing:
+      type: object
+      description: Base listing object containing minimal car listing information
+      properties:
+        id:
+          type: string
+          description: Unique listing identifier
+        vin:
+          type: string
+          description: Vehicle Identification Number
+        heading:
+          type: string
+          description: Listing heading / title
+        price:
+          type: number
+          description: Listed price in USD
+        miles:
+          type: integer
+          description: Odometer reading in miles
+        msrp:
+          type: number
+          description: Manufacturer Suggested Retail Price
+        data_source:
+          type: string
+          description: Source of the listing data
+        source_url:
+          type: string
+          description: URL to the original listing source
+        seller_type:
+          type: string
+          description: 'Type of seller: dealer, private, auction'
+          enum:
+          - dealer
+          - private
+          - auction
+        car_type:
+          type: string
+          description: Type of car listing
+          enum:
+          - new
+          - used
+          - certified
+        scraped_at:
+          type: integer
+          description: Unix timestamp when the listing was scraped
+        last_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was last seen
+        first_seen_at:
+          type: integer
+          description: Unix timestamp when the listing was first seen
+        dom:
+          type: integer
+          description: Days on market
+        dom_180:
+          type: integer
+          description: Days on market in the last 180 days
+        dom_active:
+          type: integer
+          description: Active days on market
+        dealer_id:
+          type: string
+          description: Dealer identifier
+        ref_price:
+          type: number
+          description: Reference/comparison price
+        ref_miles:
+          type: number
+          description: Reference/comparison miles
+        ref_year:
+          type: integer
+          description: Reference year
+        build:
+          $ref: '#/components/schemas/Build'
+        dealer:
+          $ref: '#/components/schemas/Dealer'
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -167,82 +243,6 @@ components:
           items:
             type: string
           description: List of car franchises/makes the dealer carries
-    BaseListing:
-      type: object
-      description: Base listing object containing minimal car listing information
-      properties:
-        id:
-          type: string
-          description: Unique listing identifier
-        vin:
-          type: string
-          description: Vehicle Identification Number
-        heading:
-          type: string
-          description: Listing heading / title
-        price:
-          type: number
-          description: Listed price in USD
-        miles:
-          type: integer
-          description: Odometer reading in miles
-        msrp:
-          type: number
-          description: Manufacturer Suggested Retail Price
-        data_source:
-          type: string
-          description: Source of the listing data
-        source_url:
-          type: string
-          description: URL to the original listing source
-        seller_type:
-          type: string
-          description: 'Type of seller: dealer, private, auction'
-          enum:
-          - dealer
-          - private
-          - auction
-        car_type:
-          type: string
-          description: Type of car listing
-          enum:
-          - new
-          - used
-          - certified
-        scraped_at:
-          type: integer
-          description: Unix timestamp when the listing was scraped
-        last_seen_at:
-          type: integer
-          description: Unix timestamp when the listing was last seen
-        first_seen_at:
-          type: integer
-          description: Unix timestamp when the listing was first seen
-        dom:
-          type: integer
-          description: Days on market
-        dom_180:
-          type: integer
-          description: Days on market in the last 180 days
-        dom_active:
-          type: integer
-          description: Active days on market
-        dealer_id:
-          type: string
-          description: Dealer identifier
-        ref_price:
-          type: number
-          description: Reference/comparison price
-        ref_miles:
-          type: number
-          description: Reference/comparison miles
-        ref_year:
-          type: integer
-          description: Reference year
-        build:
-          $ref: '#/components/schemas/Build'
-        dealer:
-          $ref: '#/components/schemas/Dealer'
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

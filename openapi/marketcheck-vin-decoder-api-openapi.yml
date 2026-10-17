@@ -122,24 +122,6 @@ paths:
                 $ref: '#/components/schemas/SafetyRating'
 components:
   schemas:
-    Economy:
-      type: object
-      description: Environmental economy data for a vehicle
-      properties:
-        vin:
-          type: string
-        co2_five_year_cost:
-          type: number
-          description: CO2 cost over 5 years
-        energy_impact_score:
-          type: number
-          description: Energy impact score
-        ghg_score:
-          type: number
-          description: Greenhouse gas score
-        smog_score:
-          type: number
-          description: Smog emission score
     FuelEfficiency:
       type: object
       description: Fuel efficiency data for a vehicle
@@ -158,24 +140,6 @@ components:
         annual_fuel_cost:
           type: number
           description: Estimated annual fuel cost in USD
-    SafetyRating:
-      type: object
-      description: Safety rating data from third party sources
-      properties:
-        vin:
-          type: string
-        overall_rating:
-          type: number
-          description: Overall safety rating
-        frontal_crash_rating:
-          type: string
-          description: Frontal crash test rating
-        side_crash_rating:
-          type: string
-          description: Side crash test rating
-        rollover_rating:
-          type: string
-          description: Rollover test rating
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -228,6 +192,42 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
+    Economy:
+      type: object
+      description: Environmental economy data for a vehicle
+      properties:
+        vin:
+          type: string
+        co2_five_year_cost:
+          type: number
+          description: CO2 cost over 5 years
+        energy_impact_score:
+          type: number
+          description: Energy impact score
+        ghg_score:
+          type: number
+          description: Greenhouse gas score
+        smog_score:
+          type: number
+          description: Smog emission score
+    SafetyRating:
+      type: object
+      description: Safety rating data from third party sources
+      properties:
+        vin:
+          type: string
+        overall_rating:
+          type: number
+          description: Overall safety rating
+        frontal_crash_rating:
+          type: string
+          description: Frontal crash test rating
+        side_crash_rating:
+          type: string
+          description: Side crash test rating
+        rollover_rating:
+          type: string
+          description: Rollover test rating
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars

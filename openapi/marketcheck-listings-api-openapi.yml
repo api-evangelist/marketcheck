@@ -488,93 +488,15 @@ paths:
                   $ref: '#/components/schemas/VinReport'
 components:
   schemas:
-    Error:
+    ListingVDP:
       type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: integer
-          description: Error code
-    VinReport:
-      type: object
-      description: Summary report for a VIN
-      properties:
-        vin:
-          type: string
-        year:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        avg_price:
-          type: number
-        avg_miles:
-          type: number
-        num_active_listings:
-          type: integer
-    Dealer:
-      type: object
-      description: Dealer information
+      description: Vehicle Details Page HTML content
       properties:
         id:
           type: string
-          description: Unique dealer identifier
-        name:
+        html:
           type: string
-          description: Dealer name
-        website:
-          type: string
-          description: Dealer website URL
-        dealer_type:
-          type: string
-          description: Type of dealership
-        zip:
-          type: string
-          description: Dealer zip code
-        city:
-          type: string
-          description: Dealer city
-        state:
-          type: string
-          description: Dealer state
-        latitude:
-          type: number
-          description: Dealer latitude
-        longitude:
-          type: number
-          description: Dealer longitude
-        phone:
-          type: string
-          description: Dealer phone number
-        franchises:
-          type: array
-          items:
-            type: string
-          description: List of car franchises/makes the dealer carries
-    ListingExtraAttributes:
-      type: object
-      description: Extra long-text attributes for a listing
-      properties:
-        id:
-          type: string
-        seller_comments:
-          type: string
-          description: Seller comments from the listing
-        options:
-          type: array
-          items:
-            type: string
-          description: List of vehicle options
-        features:
-          type: array
-          items:
-            type: string
-          description: List of vehicle features
+          description: Cached HTML content of the Vehicle Details Page
     BaseListing:
       type: object
       description: Base listing object containing minimal car listing information
@@ -651,6 +573,79 @@ components:
           $ref: '#/components/schemas/Build'
         dealer:
           $ref: '#/components/schemas/Dealer'
+    ListingExtraAttributes:
+      type: object
+      description: Extra long-text attributes for a listing
+      properties:
+        id:
+          type: string
+        seller_comments:
+          type: string
+          description: Seller comments from the listing
+        options:
+          type: array
+          items:
+            type: string
+          description: List of vehicle options
+        features:
+          type: array
+          items:
+            type: string
+          description: List of vehicle features
+    Listing:
+      allOf:
+      - $ref: '#/components/schemas/BaseListing'
+      type: object
+      description: Full listing object with all attributes
+      properties:
+        vdp_url:
+          type: string
+          description: URL to the Vehicle Details Page
+        stock_no:
+          type: string
+          description: Dealer stock number
+        inventory_type:
+          type: string
+          description: Inventory classification
+    Dealer:
+      type: object
+      description: Dealer information
+      properties:
+        id:
+          type: string
+          description: Unique dealer identifier
+        name:
+          type: string
+          description: Dealer name
+        website:
+          type: string
+          description: Dealer website URL
+        dealer_type:
+          type: string
+          description: Type of dealership
+        zip:
+          type: string
+          description: Dealer zip code
+        city:
+          type: string
+          description: Dealer city
+        state:
+          type: string
+          description: Dealer state
+        latitude:
+          type: number
+          description: Dealer latitude
+        longitude:
+          type: number
+          description: Dealer longitude
+        phone:
+          type: string
+          description: Dealer phone number
+        franchises:
+          type: array
+          items:
+            type: string
+          description: List of car franchises/makes the dealer carries
     Build:
       type: object
       description: Vehicle build/specification information decoded from VIN
@@ -703,15 +698,15 @@ components:
         city_fuel_economy:
           type: integer
           description: City fuel economy in MPG
-    ListingVDP:
+    Error:
       type: object
-      description: Vehicle Details Page HTML content
       properties:
-        id:
+        message:
           type: string
-        html:
-          type: string
-          description: Cached HTML content of the Vehicle Details Page
+          description: Error message
+        code:
+          type: integer
+          description: Error code
     SearchResponse:
       type: object
       description: Response object from search API
@@ -745,21 +740,26 @@ components:
         photo_count:
           type: integer
           description: Total number of photos
-    Listing:
-      allOf:
-      - $ref: '#/components/schemas/BaseListing'
+    VinReport:
       type: object
-      description: Full listing object with all attributes
+      description: Summary report for a VIN
       properties:
-        vdp_url:
+        vin:
           type: string
-          description: URL to the Vehicle Details Page
-        stock_no:
+        year:
+          type: integer
+        make:
           type: string
-          description: Dealer stock number
-        inventory_type:
+        model:
           type: string
-          description: Inventory classification
+        trim:
+          type: string
+        avg_price:
+          type: number
+        avg_miles:
+          type: number
+        num_active_listings:
+          type: integer
 externalDocs:
   description: MarketCheck API Documentation
   url: https://docs.marketcheck.com/docs/api/cars
