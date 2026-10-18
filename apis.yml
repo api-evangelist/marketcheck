@@ -41,6 +41,17 @@ specificationVersion: '0.23'
 tags:
   - Automotive
   - Vehicle Data
+  - VIN Decoding
+  - Car Inventory
+  - Market Data
+  - Dealer Inventory
+  - Vehicle Valuation
+  - Vehicle History
+  - Price Analytics
+  - Automotive Intelligence
+tags_raw:
+  - Automotive
+  - Vehicle Data
   - VIN Decoder
   - Car Inventory
   - Market Data
@@ -59,6 +70,10 @@ apis:
   humanURL: https://www.marketcheck.com/apis/
   baseURL: https://mc-api.marketcheck.com
   tags:
+  - VIN Decoding
+  - Vehicle Specifications
+  - Vehicle Data
+  tags_raw:
   - VIN Decoder
   - Vehicle Specifications
   - Vehicle Data
@@ -243,6 +258,8 @@ apis:
   humanURL: https://www.marketcheck.com/apis/cars/
   baseURL: https://mc-api.marketcheck.com
   tags:
+  - VIN Decoding
+  tags_raw:
   - VIN Decoder
   properties:
   - type: OpenAPI
