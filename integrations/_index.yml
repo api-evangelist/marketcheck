@@ -19,6 +19,33 @@
     registered_name: com.marketcheck/api
     register_id: com.marketcheck/api
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: marketcheck-databricks-marketplace
+  label: Databricks Marketplace
+  partner: databricks
+  partner_name: Databricks Marketplace
+  category: data product listing
+  type: marketplace
+  marketplace: databricks-marketplace
+  channel: distribution
+  evidence: https://marketplace.databricks.com/provider/d485518b-1b34-47ee-8d75-7ff19b8ab402
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: MarketCheck
+    matched_domain: marketcheck.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Historical Automotive Sales Data - North America | Car Data
+    - US Automotive Dealership Inventory Data (Updates Daily) - North America
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
