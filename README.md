@@ -66,18 +66,18 @@
 
 MarketCheck is an automotive market data platform providing REST APIs for accessing new and used vehicle listings, VIN decoding, market valuations, dealer inventory, and vehicle history data. The platform aggregates billions of data points from over 44,000 US and 3,500 Canadian dealerships, offering daily-updated inventory search, price prediction, market days supply, OEM incentives, auction listings, and third-party integrations for recalls, title checks, and plate-to-VIN lookups.
 
-**Areas:** Automotive · Vehicle Data · VIN Decoder · Car Inventory · Market Data · Dealer Inventory · Vehicle Valuation · Vehicle History · Price Analytics · Automotive Intelligence
+**Areas:** Automotive · Vehicle Data · VIN Decoding · Car Inventory · Market Data · Dealer Inventory · Vehicle Valuation · Vehicle History · Price Analytics · Automotive Intelligence
 
 ## MarketCheck on APIs.io
 
 Everything profiled for MarketCheck is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/marketcheck/](https://apis.io/providers/marketcheck/)** — or go straight to one of the APIs or properties below.
 
-### APIs (15)
+### APIs (40)
 
-- [MarketCheck VIN Decoder API](https://apis.io/apis/marketcheck/marketcheck-vin-decoder-api/) — Decode 17-digit VINs to extract year, make, model, trim, installed equipment, and full vehicle specifications. Available in Basic and NeoVIN Enhanced tiers…
+- [MarketCheck VIN Decoder API](https://apis.io/apis/marketcheck/marketcheck-vin-decoder-api-2/) — Decode 17-digit VINs to extract year, make, model, trim, installed equipment, and full vehicle specifications. Available in Basic and NeoVIN Enhanced tiers…
 - [MarketCheck Vehicle History API](https://apis.io/apis/marketcheck/marketcheck-vehicle-history-api/) — Access complete price history, odometer readings, and full listing details for vehicles up to six years back by VIN, enabling market analysis and vehicle…
 - [MarketCheck Price API](https://apis.io/apis/marketcheck/marketcheck-price-api/) — Predict market prices and retrieve MSRP for used vehicles. Three tiers available: Base (predicted price + MSRP), Premium (adds comparable vehicles), and…
-- [MarketCheck Dealer API](https://apis.io/apis/marketcheck/marketcheck-dealer-api/) — Search individual dealerships or locate multiple dealerships in a geographic area by radius. Access dealer profiles, inventory counts, and dealership group…
+- [MarketCheck Dealer API](https://apis.io/apis/marketcheck/marketcheck-dealer-api-2/) — Search individual dealerships or locate multiple dealerships in a geographic area by radius. Access dealer profiles, inventory counts, and dealership group…
 - [MarketCheck Market Insights API](https://apis.io/apis/marketcheck/marketcheck-market-insights-api/) — Obtain Market Days Supply (MDS) values, sales statistics, and popular vehicle data to understand supply and demand dynamics across the automotive market.
 - [MarketCheck OEM Incentives API](https://apis.io/apis/marketcheck/marketcheck-oem-incentives-api/) — Search incentive programs from 30+ car manufacturers by make, zip code, and other criteria to surface OEM financing, rebate, and lease offers.
 - [MarketCheck RV API](https://apis.io/apis/marketcheck/marketcheck-rv-api/) — Search recreational vehicle (RV) inventory and dealer listings across the US and Canada. Supports filtering by price, options, photos, and equipment details.
@@ -89,23 +89,77 @@ Everything profiled for MarketCheck is published on APIs.io rather than in this 
 - [MarketCheck Listings API](https://apis.io/apis/marketcheck/marketcheck-listings-api/) — Search and retrieve active car listings
 - [MarketCheck Market API](https://apis.io/apis/marketcheck/marketcheck-market-api/) — Market analytics, trends, and pricing insights
 - [MarketCheck VIN Decoder API](https://apis.io/apis/marketcheck/marketcheck-vin-decoder-api/) — VIN decoding and vehicle specifications
+- [MarketCheck Cars / Dealership Syndication API](https://apis.io/apis/marketcheck/marketcheck-cars-dealership-syndication-api/) — The Cars / Dealership Syndication API from MarketCheck — 2 operation(s) for cars / dealership syndication.
+- [MarketCheck Cars / Dealerships API](https://apis.io/apis/marketcheck/marketcheck-cars-dealerships-api/) — The Cars / Dealerships API from MarketCheck — 3 operation(s) for cars / dealerships.
+- [MarketCheck Cars / Incentives API](https://apis.io/apis/marketcheck/marketcheck-cars-incentives-api/) — The Cars / Incentives API from MarketCheck — 2 operation(s) for cars / incentives.
+- [MarketCheck Cars / Inventory API](https://apis.io/apis/marketcheck/marketcheck-cars-inventory-api/) — The Cars / Inventory API from MarketCheck — 5 operation(s) for cars / inventory.
+- [MarketCheck Cars / Market Insights API](https://apis.io/apis/marketcheck/marketcheck-cars-market-insights-api/) — The Cars / Market Insights API from MarketCheck — 14 operation(s) for cars / market insights.
+- [MarketCheck Cars / Third Party API](https://apis.io/apis/marketcheck/marketcheck-cars-third-party-api/) — The Cars / Third Party API from MarketCheck — 5 operation(s) for cars / third party.
+- [MarketCheck Cars / Vehicle History API](https://apis.io/apis/marketcheck/marketcheck-cars-vehicle-history-api/) — The Cars / Vehicle History API from MarketCheck — 1 operation(s) for cars / vehicle history.
+- [MarketCheck Cars / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-cars-vehicle-listing-api/) — The Cars / Vehicle Listing API from MarketCheck — 3 operation(s) for cars / vehicle listing.
+- [MarketCheck Cars / Vehicle Specs API](https://apis.io/apis/marketcheck/marketcheck-cars-vehicle-specs-api/) — The Cars / Vehicle Specs API from MarketCheck — 8 operation(s) for cars / vehicle specs.
+- [MarketCheck Heavy Equipments / Dealerships API](https://apis.io/apis/marketcheck/marketcheck-heavy-equipments-dealerships-api/) — The Heavy Equipments / Dealerships API from MarketCheck — 2 operation(s) for heavy equipments / dealerships.
+- [MarketCheck Heavy Equipments / Inventory API](https://apis.io/apis/marketcheck/marketcheck-heavy-equipments-inventory-api/) — The Heavy Equipments / Inventory API from MarketCheck — 2 operation(s) for heavy equipments / inventory.
+- [MarketCheck Heavy Equipments / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-heavy-equipments-vehicle-listing-api/) — The Heavy Equipments / Vehicle Listing API from MarketCheck — 1 operation(s) for heavy equipments / vehicle listing.
+- [MarketCheck Motorcycles / Dealerships API](https://apis.io/apis/marketcheck/marketcheck-motorcycles-dealerships-api/) — The Motorcycles / Dealerships API from MarketCheck — 2 operation(s) for motorcycles / dealerships.
+- [MarketCheck Motorcycles / Inventory API](https://apis.io/apis/marketcheck/marketcheck-motorcycles-inventory-api/) — The Motorcycles / Inventory API from MarketCheck — 2 operation(s) for motorcycles / inventory.
+- [MarketCheck Motorcycles / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-motorcycles-vehicle-listing-api/) — The Motorcycles / Vehicle Listing API from MarketCheck — 1 operation(s) for motorcycles / vehicle listing.
+- [MarketCheck Recreational Vehicles / Dealerships API](https://apis.io/apis/marketcheck/marketcheck-recreational-vehicles-dealerships-api/) — The Recreational Vehicles / Dealerships API from MarketCheck — 2 operation(s) for recreational vehicles / dealerships.
+- [MarketCheck Recreational Vehicles / Inventory API](https://apis.io/apis/marketcheck/marketcheck-recreational-vehicles-inventory-api/) — The Recreational Vehicles / Inventory API from MarketCheck — 2 operation(s) for recreational vehicles / inventory.
+- [MarketCheck Recreational Vehicles / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-recreational-vehicles-vehicle-listing-api/) — The Recreational Vehicles / Vehicle Listing API from MarketCheck — 1 operation(s) for recreational vehicles / vehicle listing.
+- [MarketCheck UK Cars / Dealerships API](https://apis.io/apis/marketcheck/marketcheck-uk-cars-dealerships-api/) — The UK Cars / Dealerships API from MarketCheck — 3 operation(s) for uk cars / dealerships.
+- [MarketCheck UK Cars / Inventory API](https://apis.io/apis/marketcheck/marketcheck-uk-cars-inventory-api/) — The UK Cars / Inventory API from MarketCheck — 3 operation(s) for uk cars / inventory.
+- [MarketCheck UK Cars / Market Insights API](https://apis.io/apis/marketcheck/marketcheck-uk-cars-market-insights-api/) — The UK Cars / Market Insights API from MarketCheck — 2 operation(s) for uk cars / market insights.
+- [MarketCheck UK Cars / Vehicle History API](https://apis.io/apis/marketcheck/marketcheck-uk-cars-vehicle-history-api/) — The UK Cars / Vehicle History API from MarketCheck — 1 operation(s) for uk cars / vehicle history.
+- [MarketCheck UK Cars / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-uk-cars-vehicle-listing-api/) — The UK Cars / Vehicle Listing API from MarketCheck — 2 operation(s) for uk cars / vehicle listing.
+- [MarketCheck UK Recreational Vehicles / Inventory API](https://apis.io/apis/marketcheck/marketcheck-uk-recreational-vehicles-inventory-api/) — The UK Recreational Vehicles / Inventory API from MarketCheck — 1 operation(s) for uk recreational vehicles / inventory.
+- [MarketCheck UK Recreational Vehicles / Vehicle Listing API](https://apis.io/apis/marketcheck/marketcheck-uk-recreational-vehicles-vehicle-listing-api/) — The UK Recreational Vehicles / Vehicle Listing API from MarketCheck — 1 operation(s) for uk recreational vehicles / vehicle listing.
 
 ### Published properties
 
 Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Marketcheck Webhooks](https://apis.io/asyncapis/marketcheck/marketcheck-webhooks/)
+
 #### Agentic access (1)
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Marketcheck Agentic Access](https://apis.io/agentic-access/marketcheck/marketcheck-agentic-access/)
+- [MarketCheck Agentic Access](https://apis.io/agentic-access/marketcheck/marketcheck-agentic-access/)
 
-#### JSON Schema (2)
+#### JSON Schema (25)
 
 The data models the API reads and writes.
 
+- [Averages](https://apis.io/schemas/marketcheck/marketcheck-averages/)
+- [BaseListing](https://apis.io/schemas/marketcheck/marketcheck-base-listing/)
+- [Build](https://apis.io/schemas/marketcheck/marketcheck-build/)
+- [ComparisonPoint](https://apis.io/schemas/marketcheck/marketcheck-comparison-point/)
+- [Dealer](https://apis.io/schemas/marketcheck/marketcheck-dealer/)
+- [DealerLandingPage](https://apis.io/schemas/marketcheck/marketcheck-dealer-landing-page/)
+- [DealerRating](https://apis.io/schemas/marketcheck/marketcheck-dealer-rating/)
+- [DealerReview](https://apis.io/schemas/marketcheck/marketcheck-dealer-review/)
+- [DealersResponse](https://apis.io/schemas/marketcheck/marketcheck-dealers-response/)
+- [DepreciationPoint](https://apis.io/schemas/marketcheck/marketcheck-depreciation-point/)
+- [Economy](https://apis.io/schemas/marketcheck/marketcheck-economy/)
+- [FacetItem](https://apis.io/schemas/marketcheck/marketcheck-facet-item/)
+- [FuelEfficiency](https://apis.io/schemas/marketcheck/marketcheck-fuel-efficiency/)
+- [HistoricalListing](https://apis.io/schemas/marketcheck/marketcheck-historical-listing/)
 - [MarketCheck Listing](https://apis.io/schemas/marketcheck/marketcheck-listing/)
+- [ListingExtraAttributes](https://apis.io/schemas/marketcheck/marketcheck-listing-extra-attributes/)
+- [ListingMedia](https://apis.io/schemas/marketcheck/marketcheck-listing-media/)
+- [ListingVDP](https://apis.io/schemas/marketcheck/marketcheck-listing-vdp/)
+- [Mds](https://apis.io/schemas/marketcheck/marketcheck-mds/)
+- [PlotPoint](https://apis.io/schemas/marketcheck/marketcheck-plot-point/)
+- [PopularityItem](https://apis.io/schemas/marketcheck/marketcheck-popularity-item/)
+- [SafetyRating](https://apis.io/schemas/marketcheck/marketcheck-safety-rating/)
 - [MarketCheck Search Response](https://apis.io/schemas/marketcheck/marketcheck-search-response/)
+- [TrendPoint](https://apis.io/schemas/marketcheck/marketcheck-trend-point/)
+- [VinReport](https://apis.io/schemas/marketcheck/marketcheck-vin-report/)
 
 #### JSON-LD (1)
 
@@ -139,35 +193,37 @@ Postman and Open Collection request collections.
 - [MarketCheck Cars Dealer Market API](https://apis.io/collections/marketcheck/open-marketcheck-market-api/)
 - [MarketCheck Cars Dealer VIN Decoder API](https://apis.io/collections/marketcheck/open-marketcheck-vin-decoder-api/)
 
-#### Governance rules (1)
+#### Governance rules (2)
 
 Spectral rulesets for the provider's contracts.
 
 - [MarketCheck — jsonschema rules](https://apis.io/rules/marketcheck/marketcheck-jsonschema-spectral-rules/)
+- [MarketCheck API Rules](https://apis.io/rules/marketcheck/marketcheck-rules/)
 
-#### Security (1)
+#### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Marketcheck Domain Security](https://apis.io/security/marketcheck/marketcheck-domain-security/)
+- [MarketCheck Authentication](https://apis.io/security/marketcheck/marketcheck-authentication/)
+- [MarketCheck Domain Security](https://apis.io/security/marketcheck/marketcheck-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Marketcheck Plans Pricing](https://apis.io/plans/marketcheck/marketcheck-plans-pricing/)
+- [MarketCheck Plans Pricing](https://apis.io/plans/marketcheck/marketcheck-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Marketcheck Rate Limits](https://apis.io/rate-limits/marketcheck/marketcheck-rate-limits/)
+- [MarketCheck Rate Limits](https://apis.io/rate-limits/marketcheck/marketcheck-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Marketcheck Finops](https://apis.io/finops/marketcheck/marketcheck-finops/)
+- [MarketCheck Finops](https://apis.io/finops/marketcheck/marketcheck-finops/)
 
 ## Where to find this API
 
@@ -175,12 +231,19 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 - [Website](https://www.marketcheck.com/)
 - [Documentation](https://docs.marketcheck.com/docs)
+- [Getting started](https://docs.marketcheck.com/docs/get-started/api/mcp/getting-started)
+- [API reference](https://developers.marketcheck.com)
 - [Pricing](https://www.marketcheck.com/apis/pricing/)
+- [Support](https://www.marketcheck.com/support/)
+- [Changelog](https://docs.marketcheck.com/releases/api)
 - [Blog](https://www.marketcheck.com/articles/)
+- [Terms of service](https://developers.marketcheck.com/terms)
+- [Privacy policy](https://developers.marketcheck.com/privacy)
+- [Status](https://status.marketcheck.com/)
 
 ## API Evangelist rating
 
-**Kin Score 24.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 24.9** — emerging · rubric 0.25.0 · scored 2026-10-23
 
 | Facet | Score |
 |---|---|
@@ -191,7 +254,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Developer ergonomics | 2.4 |
 | Access clarity | 18.4 |
 
-**Agent readiness 24.5** — agent-aware
+**Agent readiness 25.3** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -214,6 +277,8 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
 
 **Regulatory alignment 15.7** — Securities & Market Data
 
